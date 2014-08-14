@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http:/www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"> 
+<head>
+<title> Web rezervacije</title>
+</head>
+<body>
+  <h1> Registracija </h1>
+  <h:outputLabel value="#{userMessageBox.currentMessage}"></h:outputLabel>
+  
+  <h:form>
+    <table border="0">
+    <tr>
+    <td>Unesite korisnicko ime za registrovanje:</td>
+    <td><h:inputText id="username" value="#{loginData.username}"></h:inputText></td>
+    </tr>
+    <tr>
+      <td> &nbsp; </td>
+      <td><h:commandButton value="Register" action="#{user.register}"></h:commandButton></td>
+    </tr>
+    </table>
+  </h:form>
+  <p>
+  <a href="index.xhtml">Prijava na sistem</a>
+  </p>
+</body>
+</html>

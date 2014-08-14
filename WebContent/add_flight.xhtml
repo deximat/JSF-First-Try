@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http:/www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"> 
+<head>
+<title> Web rezervacije</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h1>Prijavljen korisnik: marko</h1>
+  <h2>Dodavanje leta</h2>
+  <h:form >
+  <table border="0" width="60%">
+  <tr><td>ID leta:</td><td><h:inputText value="#{addFlightRequest.flightId}"></h:inputText></td>   </tr>
+  <tr><td>Datum i vreme polaska:</td><td><h:inputText value="#{addFlightRequest.departureTime}"></h:inputText></td>  </tr>
+  <tr><td>Datum i vreme dolaska:</td><td><h:inputText value="#{addFlightRequest.arrivalTime}"></h:inputText></td>  </tr>
+  <tr><td>Polazni aerodrom:</td><td><h:inputText value="#{addFlightRequest.source}"></h:inputText></td>  </tr>
+  <tr><td>Odredišni aerodrom:</td><td><h:inputText value="#{addFlightRequest.destination}"></h:inputText></td>  </tr>
+  <tr><td>Broj sedista:</td><td><h:inputText value="#{addFlightRequest.numberOfPassingers}"></h:inputText></td>  </tr>
+  <tr><td> &nbsp; </td><td><h:commandButton action="#{user.addFlight}"></h:commandButton> </td></tr>
+  </table>
+  </h:form>
+  <p>
+  <a href="home.faces">Spisak svih letova</a>
+  </p>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_51" class="java.beans.XMLDecoder">
+ <object class="java.util.TreeMap">
+  <void method="put">
+   <string>AIR-GRGIC-666</string>
+   <object class="dejanpe.zadatak1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1393913220000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1393913160000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>Hell</string>
+    </void>
+    <void property="flightId">
+     <string>AIR-GRGIC-666</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>11</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>8</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>4488898</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>4488898</string>
+       </void>
+       <void property="name">
+        <string>Marinko</string>
+       </void>
+       <void property="surname">
+        <string>Rotkvic</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>324233</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>324233</string>
+       </void>
+       <void property="name">
+        <string>Kockica</string>
+       </void>
+       <void property="surname">
+        <string>Blah</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>23423432</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>23423432</string>
+       </void>
+       <void property="name">
+        <string>Dejan4</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>324234</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>324234</string>
+       </void>
+       <void property="name">
+        <string>Dejan</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>32423333</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>32423333</string>
+       </void>
+       <void property="name">
+        <string>Petar</string>
+       </void>
+       <void property="surname">
+        <string>Partlov</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>234234</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>234234</string>
+       </void>
+       <void property="name">
+        <string>Deximat</string>
+       </void>
+       <void property="surname">
+        <string>Jojo</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>3244444</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>3244444</string>
+       </void>
+       <void property="name">
+        <string>jojo</string>
+       </void>
+       <void property="surname">
+        <string>ff</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="source">
+     <string>Heaven</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>CIST_LET</string>
+   <object class="dejanpe.zadatak1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1418382780000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1418382720000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>Oblak</string>
+    </void>
+    <void property="flightId">
+     <string>CIST_LET</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>111</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>6</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>4344</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>4344</string>
+       </void>
+       <void property="name">
+        <string>Dejan</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>3242342</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>3242342</string>
+       </void>
+       <void property="name">
+        <string>Dejan3</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>342423</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>342423</string>
+       </void>
+       <void property="name">
+        <string>Korisnik</string>
+       </void>
+       <void property="surname">
+        <string>Pera</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>34334</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>34334</string>
+       </void>
+       <void property="name">
+        <string>Dejannn</string>
+       </void>
+       <void property="surname">
+        <string>dfsdfsd</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>324234</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>324234</string>
+       </void>
+       <void property="name">
+        <string>Marija</string>
+       </void>
+       <void property="surname">
+        <string>Petrovic</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>23423423</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>23423423</string>
+       </void>
+       <void property="name">
+        <string>jojojojojo</string>
+       </void>
+       <void property="surname">
+        <string>rr</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="source">
+     <string>Vremenski</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>GRGIC-AIR-X-01</string>
+   <object class="dejanpe.zadatak1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1396645500000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1396641900000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>MiteCenica</string>
+    </void>
+    <void property="flightId">
+     <string>GRGIC-AIR-X-01</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>2</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>1</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>234234234</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>234234234</string>
+       </void>
+       <void property="name">
+        <string>Dejan</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="source">
+     <string>KraljiceN</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>GRGIC-TRAVEL-11B</string>
+   <object class="dejanpe.zadatak1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1396731000000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1396730820000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>Kopenhagen</string>
+    </void>
+    <void property="flightId">
+     <string>GRGIC-TRAVEL-11B</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>666</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>2</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>47249237</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>47249237</string>
+       </void>
+       <void property="name">
+        <string>Ksenija</string>
+       </void>
+       <void property="surname">
+        <string>Grgic</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>234234</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>234234</string>
+       </void>
+       <void property="name">
+        <string>Dejan</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="source">
+     <string>Barselona</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>PEKTER-AIR-2233</string>
+   <object class="dejanpe.zadatak1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1388699700000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1388698980000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>Xenija</string>
+    </void>
+    <void property="flightId">
+     <string>PEKTER-AIR-2233</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>1</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>1</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>324823423</string>
+      <object class="dejanpe.zadatak1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>324823423</string>
+       </void>
+       <void property="name">
+        <string>Ksenija</string>
+       </void>
+       <void property="surname">
+        <string>Grgic</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="source">
+     <string>Beograd</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
