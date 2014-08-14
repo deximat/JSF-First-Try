@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13993899598511" configfile="/WebProgramiranje zadatak2/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="start.xhtml" x="338" y="562" id="pf14078770271640" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" outlinks="pf14078770610259 pf14078850402500" inlinks="pf14078850402500 pf14078850402501 pf14078861235384 pf14080444190850" path="index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="home.xhtml" x="554" y="562" id="pf140787706102510" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14080444553508" inlinks="pf14078770610259" path="home.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registracija.xhtml" x="122" y="178" id="pf14078850402502" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14078850402501 pf14078850402503" inlinks="pf14078850402503" path="registracija.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf14078861235385" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14078861235384 pf14080444190850" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.faces" x="122" y="946" id="pf14078861235387" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" path="index.faces"/>
+  <nodes xsi:type="pageflow:PFPage" name="list_flight.xhtml" id="pf14080444553509" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14080444553508" path="list_flight.xhtml"/>
+  <links id="pf14078770610259" target="pf140787706102510" source="pf14078770271640" outcome="SUCCESS"/>
+  <links id="pf14078850402501" target="pf14078770271640" source="pf14078850402502" outcome="SUCCESS"/>
+  <links id="pf14078861235384" target="pf14078770271640" source="pf14078861235385" outcome="ACCESS_DENIED"/>
+  <links id="pf14080444190850" target="pf14078770271640" source="pf14078861235385" fromaction="#{user.logout}"/>
+  <links id="pf14078850402500" target="pf14078770271640" source="pf14078770271640" outcome="USER_NOT_FOUND">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf14078850402503" target="pf14078850402502" source="pf14078850402502" outcome="USER_NOT_FOUND">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf14080444553508" target="pf14080444553509" source="pf140787706102510" outcome="SUCCESS"/>
+</pageflow:Pageflow>
