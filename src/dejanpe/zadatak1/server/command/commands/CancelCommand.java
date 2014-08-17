@@ -1,5 +1,7 @@
 package dejanpe.zadatak1.server.command.commands;
 
+import com.codlex.faces.first_application.messages.CancelReservationResponse;
+
 import dejanpe.zadatak1.server.command.AbstractCommand;
 import dejanpe.zadatak1.server.command.Command;
 import dejanpe.zadatak1.server.core.flight.FlightDAO;
@@ -20,7 +22,7 @@ public class CancelCommand extends AbstractCommand implements Command {
 	protected void executeCommand() {
 		Passenger passenger = PassengerDAO.get().getPassengerByJMBG(this.JMBG);
 		if (passenger == null) {
-			this.result = "Passenger doesn't exist!";
+			this.result = CancelReservationResponse.PASSENGER_DOESNT_EXIST;
 			return;
 		}
 		this.result = FlightDAO.get().cancel(this.flightId, passenger);

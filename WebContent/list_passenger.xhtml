@@ -15,7 +15,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
   <table border="1" width="80%">
   	  <tr bgcolor="lightgrey"><th width="10%">Redni broj</th><th width="20%">ID leta</th><th width="20%">Vreme polaska</th><th width="20%">Vreme dolaska</th><th width="30%">Polazni aerodrom</th><th width="30%">Odrediste</th><th width="10%">Otkaz rezervacije</th></tr>
    	  <ui:repeat value="#{user.getCurrentPassenger().getFlights()}" var="flight" varStatus="loop">
-	 	 <tr><h:commandLink action="#{user.showFlight(flight)}"><td><h:outputText value="#{loop.index + 1}" /></td><td><h:outputText value="#{flight.flightId}"></h:outputText></td><td><h:outputText value="#{flight.departureTime}" /></td><td><h:outputText value="#{flight.arrivalTime}" /></td><td><h:outputText value="#{flight.source}" /></td><td><h:outputText value="#{flight.destination}" /></td>  </h:commandLink><td> <a href="cancel.html">Otkaz</a></td></tr>
+	 	 <tr><h:commandLink action="#{user.showFlight(flight)}"><td><h:outputText value="#{loop.index + 1}" /></td><td><h:outputText value="#{flight.flightId}"></h:outputText></td><td><h:outputText value="#{flight.departureTime}" /></td><td><h:outputText value="#{flight.arrivalTime}" /></td><td><h:outputText value="#{flight.source}" /></td><td><h:outputText value="#{flight.destination}" /></td>  </h:commandLink><td> <h:commandLink action="#{user.cancelFlight(flight)}">Otkaz</h:commandLink></td></tr>
 	  </ui:repeat>
   </table>
   </h:form>

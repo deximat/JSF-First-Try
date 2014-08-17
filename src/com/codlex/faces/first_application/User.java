@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import com.codlex.faces.first_application.beans.LoginData;
 import com.codlex.faces.first_application.commands.AddFlight;
 import com.codlex.faces.first_application.commands.AddReservation;
+import com.codlex.faces.first_application.commands.CancelReservation;
 import com.codlex.faces.first_application.commands.GetFlights;
 import com.codlex.faces.first_application.commands.ListFlight;
 import com.codlex.faces.first_application.commands.ListPassenger;
@@ -29,7 +30,21 @@ import dejanpe.zadatak1.server.core.passenger.Passenger;
 @SessionScoped
 @ManagedBean
 public class User {
+	public String cancelPassenger(Passenger passenger) {
+		this.currentPassenger = passenger;
+		return "SUCCESS";
 
+	}
+	
+	public String cancelFlight(Flight flight) {
+		this.currentFlight = flight;
+		return "SUCCESS";
+	}
+	public String cancelCurrentReservation() {
+		new CancelReservation(this.client).execute(this.currentFlight.getFlightId(), this.currentPassenger.getJMBG());
+		return "SUCCESS";
+	}
+	
 	@ManagedProperty(value="#{loginData}")
 	private LoginData loginData;
 	

@@ -47,6 +47,11 @@
 	<navigation-rule>
 		<from-view-id>list_flight.xhtml</from-view-id>
 		<navigation-case>
+			<from-action>#{user.cancelPassenger(passenger)}</from-action>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>cancel.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>list_passenger.xhtml</to-view-id>
 		</navigation-case>
@@ -54,6 +59,11 @@
     
     <navigation-rule>
 		<from-view-id>list_passenger.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{user.cancelFlight(flight)}</from-action>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>cancel.xhtml</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>list_flight.xhtml</to-view-id>

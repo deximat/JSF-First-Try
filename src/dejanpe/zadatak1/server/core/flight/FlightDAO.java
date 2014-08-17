@@ -14,6 +14,7 @@ import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import com.codlex.faces.first_application.messages.AddReservationResponse;
+import com.codlex.faces.first_application.messages.CancelReservationResponse;
 
 import dejanpe.zadatak1.server.core.passenger.Passenger;
 import dejanpe.zadatak1.server.core.passenger.PassengerDAO;
@@ -42,24 +43,24 @@ public class FlightDAO {
 	}
 
 
-	public synchronized String cancel(final String flightId, final Passenger passenger) {
+	public synchronized CancelReservationResponse cancel(final String flightId, final Passenger passenger) {
 		Flight flight = getFlightById(flightId);
 		if (flight == null) {
-			return "Flight doesn't exist";
+			return CancelReservationResponse.FLIGHT_DOESNT_EXIST;
 		}
 		// check for time constraint
 		long now = System.currentTimeMillis();
 		long millisUntilFlight = flight.getDepartureTime().getTime() - now;
 
 		if (TimeUnit.MILLISECONDS.toHours(millisUntilFlight) < 24) {
-			return "It is too late to cancel reservation now!";
+			return CancelReservationResponse.RESERVATION_NOT_POSSIBLE_TOO_LATE;
 		}
 
 		if (flight.cancel(passenger)) {
 			persist();
-			return "Canceled reservation succesfully";
+			return CancelReservationResponse.SUCCESS;
 		} else {
-			return "Passinger is not on this flight!";
+			return CancelReservationResponse.WRONG_FLIGHT;
 		}
 	}
 

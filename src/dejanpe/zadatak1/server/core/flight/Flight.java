@@ -47,6 +47,8 @@ public class Flight implements Serializable {
 		if (this.passengers.get(passenger.getJMBG()) != null) {
 			// it exists so
 			this.passengers.remove(passenger.getJMBG());
+			passenger.getFlights().remove(this);
+			
 			this.numberOfReservations--;
 			return true;
 		}
@@ -148,13 +150,9 @@ public class Flight implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Flight(" + this.flightId + " from " + this.source + " to " + this.destination + " with capacity of "
-				+ this.numberOfPassingers + " there is still " + (this.numberOfPassingers - this.numberOfReservations)
-				+ " of reservations available )" + getPassengersList();
-	}
-
-	public void putReservationUnsafe(Passenger persistedPassenger) {
-		// TODO Auto-generated method stub
-		
+		return this.flightId + ", od: " + this.source + ", do: " + this.destination + ", od: " + this.departureTime + ",  do: " + this.arrivalTime;
+//		return "Flight(" + this.flightId + " from " + this.source + " to " + this.destination + " with capacity of "
+//				+ this.numberOfPassingers + " there is still " + (this.numberOfPassingers - this.numberOfReservations)
+//				+ " of reservations available )" + getPassengersList();
 	}
 }
