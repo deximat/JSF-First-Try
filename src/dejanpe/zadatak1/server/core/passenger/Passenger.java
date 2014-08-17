@@ -1,6 +1,12 @@
 package dejanpe.zadatak1.server.core.passenger;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import dejanpe.zadatak1.server.core.flight.Flight;
 
 public class Passenger implements Serializable {
 
@@ -8,6 +14,7 @@ public class Passenger implements Serializable {
 	private String JMBG;
 	private String name;
 	private String surname;
+	private List<Flight> flights = new ArrayList<>();
 
 	public Passenger() {
 
@@ -21,6 +28,14 @@ public class Passenger implements Serializable {
 
 	public String getJMBG() {
 		return this.JMBG;
+	}
+
+	public List<Flight> getFlights() {
+		return flights;
+	}
+
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
 	}
 
 	public String getName() {
@@ -46,5 +61,9 @@ public class Passenger implements Serializable {
 	@Override
 	public String toString() {
 		return this.name + " " + this.surname;
+	}
+
+	public void addFlight(Flight flight) {
+		this.flights.add(flight);
 	}
 }

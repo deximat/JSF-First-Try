@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import com.codlex.faces.first_application.messages.AddReservationResponse;
 
 import dejanpe.zadatak1.server.core.passenger.Passenger;
+import dejanpe.zadatak1.server.core.passenger.PassengerDAO;
 
 public class FlightDAO {
 
@@ -31,7 +32,15 @@ public class FlightDAO {
 
 	private FlightDAO() {
 		this.registredFlights = loadFlights();
+		for (Flight flight : this.registredFlights.values()) {
+			for (Passenger passenger : flight.getPassengers().values()) {
+				Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(passenger);
+				flight.getPassengers().put(persistedPassenger.getJMBG(), persistedPassenger);
+				persistedPassenger.addFlight(flight);
+			}
+		}
 	}
+
 
 	public synchronized String cancel(final String flightId, final Passenger passenger) {
 		Flight flight = getFlightById(flightId);

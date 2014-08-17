@@ -11,12 +11,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 <body>
   <h1>Prijavljen korisnik: <h:outputLabel value="#{loginData.username}"></h:outputLabel></h1>
   <h2>Let <h:outputText value="#{user.currentFlight.flightId}" />, od: <h:outputText value="#{user.currentFlight.source}" />, do: <h:outputText value="#{user.currentFlight.destination}" />, od <h:outputText value="#{user.currentFlight.departureTime}" />, do <h:outputText value="#{user.currentFlight.arrivalTime}" />.</h2>
+  <h:form>
   <table border="1" width="60%">
  		<tr><th width="80%">Putnik</th><th width="20%">Otkaz rezervacije</th></tr>
 	  <ui:repeat value="#{user.getCurrentFlight().getPassengersList()}" var="passenger" >
-	 	 <tr><td><h:outputText value="#{passenger.toString()}" /></td><td><a href="cancel.faces">Otkazi</a></td>   </tr>
+	 	 <tr><td><h:commandLink action="#{user.showPassenger(passenger)}"><h:outputText value="#{passenger.toString()}" /></h:commandLink> </td><td><a href="cancel.faces">Otkazi</a></td>  </tr>
 	  </ui:repeat>
+  
   </table>
+  </h:form>
+  
   <br/>
   <p>
   <a href="rezervacija.faces">Rezervacija sedista</a>

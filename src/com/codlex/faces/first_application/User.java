@@ -14,6 +14,7 @@ import com.codlex.faces.first_application.commands.AddFlight;
 import com.codlex.faces.first_application.commands.AddReservation;
 import com.codlex.faces.first_application.commands.GetFlights;
 import com.codlex.faces.first_application.commands.ListFlight;
+import com.codlex.faces.first_application.commands.ListPassenger;
 import com.codlex.faces.first_application.commands.Login;
 import com.codlex.faces.first_application.commands.Register;
 import com.codlex.faces.first_application.messages.AddFlightRequest;
@@ -23,6 +24,7 @@ import com.codlex.faces.first_application.messages.LoginResponse;
 import com.codlex.faces.first_application.messages.RegisterResponse;
 
 import dejanpe.zadatak1.server.core.flight.Flight;
+import dejanpe.zadatak1.server.core.passenger.Passenger;
 
 @SessionScoped
 @ManagedBean
@@ -51,6 +53,9 @@ public class User {
 
 
 	volatile private Flight currentFlight;
+
+
+	private Passenger currentPassenger;
 	
 	public void requireLoggedIn() {
 		boolean isLoggedIn = client != null;
@@ -135,6 +140,14 @@ public class User {
 		return "SUCCESS";
 	}
 	
+	public Passenger getCurrentPassenger() {
+		return this.currentPassenger;
+	}
+	
+	public String showPassenger(Passenger passenger) {
+		this.currentPassenger = new ListPassenger(this.client, passenger).execute();
+		return "SUCCESS";
+	}
 	public synchronized Flight getCurrentFlight() {
 		return this.currentFlight;
 	}

@@ -124,12 +124,7 @@ public enum CommandType {
 			String name = params[2];
 			String surname = params[3];
 			// try to find passenger in cache
-			Passenger passenger = PassengerDAO.get().getPassengerByJMBG(JMBG);
-			if (passenger == null) {
-				// if not found create new one
-				passenger = new Passenger(JMBG, name, surname);
-				PassengerDAO.get().insert(passenger);
-			}
+			Passenger passenger = PassengerDAO.get().insertOrAttach(new Passenger(JMBG, name, surname));
 			return new ReserveCommand(flightId, passenger);
 		}
 	},

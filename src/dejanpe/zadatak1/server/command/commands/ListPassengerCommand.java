@@ -16,7 +16,7 @@ public class ListPassengerCommand extends AbstractCommand {
 	protected void executeCommand() {
 		Passenger passenger = PassengerDAO.get().getPassengerByJMBG(this.JMBG);
 		if (passenger != null) {
-			this.result = passenger.toString();
+			this.result = passenger;
 		} else {
 			this.result = "There is no such passenger!";
 		}

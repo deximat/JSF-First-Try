@@ -43,6 +43,22 @@
 			<to-view-id>sediste_rezervisano.xhtml</to-view-id>
 		</navigation-case>
     </navigation-rule>	   
+
+	<navigation-rule>
+		<from-view-id>list_flight.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>list_passenger.xhtml</to-view-id>
+		</navigation-case>
+    </navigation-rule>    
+    
+    <navigation-rule>
+		<from-view-id>list_passenger.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>list_flight.xhtml</to-view-id>
+		</navigation-case>
+    </navigation-rule>  
     
     <navigation-rule>
     	<from-view-id>*</from-view-id>

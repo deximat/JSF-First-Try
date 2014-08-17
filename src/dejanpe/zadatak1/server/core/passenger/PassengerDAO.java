@@ -22,13 +22,15 @@ public class PassengerDAO {
 	public synchronized Passenger getPassengerByJMBG(final String JMBG) {
 		return this.registredPassengers.get(JMBG);
 	}
-
-	public synchronized boolean insert(final Passenger passenger) {
-		if (this.registredPassengers.get(passenger.getJMBG()) != null) {
-			return false;
+	
+	
+	public synchronized Passenger insertOrAttach(final Passenger passenger) {
+		Passenger existingPassenger = this.registredPassengers.get(passenger.getJMBG());
+		if (existingPassenger != null) {
+			return existingPassenger;
 		}
 		this.registredPassengers.put(passenger.getJMBG(), passenger);
-		return true;
+		return passenger;
 	}
 
 }

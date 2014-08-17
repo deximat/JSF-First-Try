@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import dejanpe.zadatak1.server.core.passenger.Passenger;
+import dejanpe.zadatak1.server.core.passenger.PassengerDAO;
 
 public class Flight implements Serializable {
 
@@ -21,6 +22,7 @@ public class Flight implements Serializable {
 
 	private int numberOfReservations;
 	private Map<String, Passenger> passengers = new HashMap<>();
+	private int hashCode;
 
 	public Flight() {
 
@@ -33,6 +35,7 @@ public class Flight implements Serializable {
 	public Flight(final String flightId, final Date departureTime, final Date arrivalTime, final String source,
 			final String destination, final int numberOfPassingers) {
 		this.flightId = flightId;
+		this.hashCode = flightId.hashCode();
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
 		this.source = source;
@@ -56,7 +59,7 @@ public class Flight implements Serializable {
 			return false;
 		}
 		Flight f = (Flight) obj;
-		return this.flightId.equals(f.flightId);
+		return this.hashCode == f.hashCode;
 	}
 
 	public Date getArrivalTime() {
@@ -93,7 +96,7 @@ public class Flight implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return this.flightId.hashCode();
+		return this.hashCode;
 	}
 
 	public boolean reserve(final Passenger passenger) {
@@ -101,7 +104,9 @@ public class Flight implements Serializable {
 		if (newNumberOfReservations <= this.numberOfPassingers) {
 			// success
 			this.numberOfReservations = newNumberOfReservations;
-			this.passengers.put(passenger.getJMBG(), passenger);
+			Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(passenger);
+			this.passengers.put(passenger.getJMBG(), persistedPassenger);
+			persistedPassenger.addFlight(this);
 			return true;
 		} else {
 			return false;
@@ -122,6 +127,7 @@ public class Flight implements Serializable {
 
 	public void setFlightId(final String flightId) {
 		this.flightId = flightId;
+		this.hashCode = flightId.hashCode();
 	}
 
 	public void setNumberOfPassingers(final int numberOfPassingers) {
@@ -145,5 +151,10 @@ public class Flight implements Serializable {
 		return "Flight(" + this.flightId + " from " + this.source + " to " + this.destination + " with capacity of "
 				+ this.numberOfPassingers + " there is still " + (this.numberOfPassingers - this.numberOfReservations)
 				+ " of reservations available )" + getPassengersList();
+	}
+
+	public void putReservationUnsafe(Passenger persistedPassenger) {
+		// TODO Auto-generated method stub
+		
 	}
 }
