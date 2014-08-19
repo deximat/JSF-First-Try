@@ -9,15 +9,15 @@ public class AddCommand extends AbstractCommand {
 
 	private Flight flight;
 
-	public AddCommand(final Flight flight) {
-		this.flight = flight;
-	}
-
 	/**
-	 * Instantiates for failed parsing. 
+	 * Instantiates for failed parsing.
 	 */
 	public AddCommand() {
 		this.result = AddFlightResponse.PARSE_FAILED;
+	}
+
+	public AddCommand(final Flight flight) {
+		this.flight = flight;
 	}
 
 	@Override

@@ -2,19 +2,17 @@ package com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.ser
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 
 public class Passenger implements Serializable {
 
 	private static final long serialVersionUID = -4100224177712466654L;
+	private List<Flight> flights = new ArrayList<>();
 	private String JMBG;
 	private String name;
 	private String surname;
-	private List<Flight> flights = new ArrayList<>();
 
 	public Passenger() {
 
@@ -26,16 +24,16 @@ public class Passenger implements Serializable {
 		this.surname = surname;
 	}
 
-	public String getJMBG() {
-		return this.JMBG;
+	public void addFlight(Flight flight) {
+		this.flights.add(flight);
 	}
 
 	public List<Flight> getFlights() {
 		return flights;
 	}
 
-	public void setFlights(List<Flight> flights) {
-		this.flights = flights;
+	public String getJMBG() {
+		return this.JMBG;
 	}
 
 	public String getName() {
@@ -44,6 +42,10 @@ public class Passenger implements Serializable {
 
 	public String getSurname() {
 		return this.surname;
+	}
+
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
 	}
 
 	public void setJMBG(final String jMBG) {
@@ -57,13 +59,9 @@ public class Passenger implements Serializable {
 	public void setSurname(final String surname) {
 		this.surname = surname;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.name + " " + this.surname;
-	}
-
-	public void addFlight(Flight flight) {
-		this.flights.add(flight);
 	}
 }

@@ -13,26 +13,23 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 public class Flight implements Serializable {
 
 	private static final long serialVersionUID = 4181421455147017958L;
-	private String flightId;
-	private Date departureTime;
 	private Date arrivalTime;
-	private String source;
+	private Date departureTime;
 	private String destination;
+	private String flightId;
+	private int hashCode;
 	private int numberOfPassingers;
 
 	private int numberOfReservations;
 	private Map<String, Passenger> passengers = new HashMap<>();
-	private int hashCode;
+	private String source;
 
 	public Flight() {
 
 	}
-	
-	public List<Passenger> getPassengersList() {
-		return new ArrayList<Passenger>(this.passengers.values());
-	}
-	
-	public Flight(final String flightId, final Date departureTime, final Date arrivalTime, final String source,
+
+	public Flight(final String flightId, final Date departureTime,
+			final Date arrivalTime, final String source,
 			final String destination, final int numberOfPassingers) {
 		this.flightId = flightId;
 		this.hashCode = flightId.hashCode();
@@ -48,7 +45,7 @@ public class Flight implements Serializable {
 			// it exists so
 			this.passengers.remove(passenger.getJMBG());
 			passenger.getFlights().remove(this);
-			
+
 			this.numberOfReservations--;
 			return true;
 		}
@@ -92,6 +89,10 @@ public class Flight implements Serializable {
 		return this.passengers;
 	}
 
+	public List<Passenger> getPassengersList() {
+		return new ArrayList<Passenger>(this.passengers.values());
+	}
+
 	public String getSource() {
 		return this.source;
 	}
@@ -106,7 +107,8 @@ public class Flight implements Serializable {
 		if (newNumberOfReservations <= this.numberOfPassingers) {
 			// success
 			this.numberOfReservations = newNumberOfReservations;
-			Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(passenger);
+			Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(
+					passenger);
 			this.passengers.put(passenger.getJMBG(), persistedPassenger);
 			persistedPassenger.addFlight(this);
 			return true;
@@ -150,9 +152,8 @@ public class Flight implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.flightId + ", od: " + this.source + ", do: " + this.destination + ", od: " + this.departureTime + ",  do: " + this.arrivalTime;
-//		return "Flight(" + this.flightId + " from " + this.source + " to " + this.destination + " with capacity of "
-//				+ this.numberOfPassingers + " there is still " + (this.numberOfPassingers - this.numberOfReservations)
-//				+ " of reservations available )" + getPassengersList();
+		return this.flightId + ", od: " + this.source + ", do: "
+				+ this.destination + ", od: " + this.departureTime + ",  do: "
+				+ this.arrivalTime;
 	}
 }

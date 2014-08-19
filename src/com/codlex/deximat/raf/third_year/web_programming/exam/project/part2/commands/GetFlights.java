@@ -6,16 +6,16 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.mess
 
 public class GetFlights {
 	private Client client;
-	
+
 	public GetFlights(Client client) {
 		this.client = client;
 	}
-	
-	public GetFlightsResponse execute() { 
+
+	public GetFlightsResponse execute() {
 		this.client.sendCommandToServer(produceCommand());
-		return  (GetFlightsResponse) this.client.getResult();
+		return (GetFlightsResponse) this.client.getResult();
 	}
-	
+
 	private String produceCommand() {
 		return CommandType.LIST_ALL.getIdentifier();
 	}

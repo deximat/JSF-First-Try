@@ -7,9 +7,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 	<ui:composition template="logged_in_template.xhtml">
-		<ui:define name="title">Sediste na letu: YUBG241, od: Beograd, do: Podgorica, 20.06.2014, od: 14:15, do 14:45, za putnika: Nenad Nenadic OTKAZANO!</ui:define>
-		<ui:define name="content"></ui:define>
-		<ui:define name="navigation">  <a href="main.faces">Povratak na osnovnu stranu.</a></ui:define>
+		<ui:define name="title">
+			<h:panelGroup rendered="#{userMessageBox.currentMessage != null}">
+				<!--  Doslo je do greske -->
+				<h:outputText value="#{userMessageBox.currentMessage}" />
+			</h:panelGroup>
+			<h:panelGroup rendered="#{userMessageBox.currentMessage == null}">
+				<!--  Sve je OK -->
+				Sediste na letu: <h:outputText value="#{user.currentFlight}" /> za putnika <h:outputText value="#{user.currentPassenger}" /> OTKAZANO!
+			</h:panelGroup>
+		</ui:define>
+		<ui:define name="navigation">
+			<a href="home.faces">Povratak na osnovnu stranu.</a>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

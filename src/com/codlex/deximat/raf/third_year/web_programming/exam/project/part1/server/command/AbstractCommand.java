@@ -4,18 +4,20 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 
 public abstract class AbstractCommand implements Command {
 
-	private User userInvoker;
-
 	protected Object result;
+
+	private User userInvoker;
 
 	@Override
 	public void execute() {
 		if (!shouldAutorize() || this.userInvoker != null) {
 			System.out.println("Started command " + getClass().getSimpleName());
 			executeCommand();
-			System.out.println("Finished command " + getClass().getSimpleName());
+			System.out
+					.println("Finished command " + getClass().getSimpleName());
 		} else {
-			this.result = "You must be logged in to run command: " + getClass().getSimpleName();
+			this.result = "You must be logged in to run command: "
+					+ getClass().getSimpleName();
 		}
 	}
 

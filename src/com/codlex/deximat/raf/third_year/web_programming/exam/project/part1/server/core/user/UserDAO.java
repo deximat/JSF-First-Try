@@ -13,17 +13,17 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class UserDAO implements Serializable {
+	private final static UserDAO INSTANCE = new UserDAO();
+
 	private static final long serialVersionUID = 2060867676962033377L;
+
+	private static final String USERS_PERSISTANCE_FILE = "users.txt";
 
 	public static UserDAO get() {
 		return INSTANCE;
 	}
 
 	private Map<String, User> registredUsers;
-
-	private final static UserDAO INSTANCE = new UserDAO();
-
-	private static final String USERS_PERSISTANCE_FILE = "users.txt";
 
 	public UserDAO() {
 		this.registredUsers = loadUsers();
@@ -37,7 +37,8 @@ public class UserDAO implements Serializable {
 	public Map<String, User> loadUsers() {
 		XMLDecoder decoder = null;
 		try {
-			decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(USERS_PERSISTANCE_FILE)));
+			decoder = new XMLDecoder(new BufferedInputStream(
+					new FileInputStream(USERS_PERSISTANCE_FILE)));
 			return (Map<String, User>) decoder.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("No users to load!");
@@ -47,12 +48,13 @@ public class UserDAO implements Serializable {
 				decoder.close();
 			}
 		}
-		
+
 	}
 
 	private void persist() {
 		try {
-			XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(USERS_PERSISTANCE_FILE)));
+			XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(
+					new FileOutputStream(USERS_PERSISTANCE_FILE)));
 			encoder.writeObject(this.registredUsers);
 			encoder.close();
 		} catch (IOException e) {

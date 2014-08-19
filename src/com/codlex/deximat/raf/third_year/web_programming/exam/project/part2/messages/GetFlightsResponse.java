@@ -10,15 +10,15 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 public class GetFlightsResponse implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Flight> flights;
-	
+
+	public GetFlightsResponse() {
+
+	}
+
 	public GetFlightsResponse(Collection<Flight> flights) {
 		this.flights = new ArrayList<Flight>(flights);
 	}
 
-	public GetFlightsResponse() {
-		
-	}
-	
 	public List<Flight> getFlights() {
 		return flights;
 	}
@@ -26,6 +26,5 @@ public class GetFlightsResponse implements Serializable {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
-	
-	
+
 }

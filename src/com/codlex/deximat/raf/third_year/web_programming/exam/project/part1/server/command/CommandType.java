@@ -20,14 +20,72 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 
 public enum CommandType {
 
-	REGISTER("REGISTER") {
+	ADD("ADD") {
+		@Override
+		public Command buildCommand(final String[] params) {
+			// ADD <FLIGHT_ID> <DEPARTURE_DATE_TIME> <ARRIVAL_DATE_TIME>
+			// <SOURCE> <DESTINATION> <NO_OF_PASSENGERS>
+			if (params.length != 6) {
+				return null;
+			}
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+					"yyyy-MM-dd-HH-mm");
+			String flightId = params[0];
+			Date departureTime;
+			Date arrivalTime;
+			try {
+				departureTime = simpleDateFormat.parse(params[1]);
+				arrivalTime = simpleDateFormat.parse(params[2]);
+			} catch (ParseException e) {
+				System.out.println("Parse exception!");
+				return new AddCommand();
+			}
+
+			String source = params[3];
+			String destination = params[4];
+			int numberOfPassingers = Integer.parseInt(params[5]);
+			return new AddCommand(new Flight(flightId, departureTime,
+					arrivalTime, source, destination, numberOfPassingers));
+		}
+	},
+	CANCEL("CANCEL") {
+		@Override
+		public Command buildCommand(final String[] params) {
+			if (params.length != 2) {
+				return null;
+			}
+			String flightId = params[0];
+			String JMBG = params[1];
+			return new CancelCommand(flightId, JMBG);
+		}
+	},
+	LIST("LIST") {
 		@Override
 		public Command buildCommand(final String[] params) {
 			if (params.length != 1) {
 				return null;
 			}
-			String username = params[0];
-			return new RegisterCommand(username);
+			String flightId = params[0];
+			return new ListCommand(flightId);
+		}
+	},
+	LIST_ALL("LIST_ALL") {
+		@Override
+		public Command buildCommand(final String[] params) {
+			if (params.length != 0) {
+				return null;
+			}
+			return new ListAllCommand();
+		}
+	},
+	LIST_PASSENGER("LIST_PASSENGER") {
+		@Override
+		public Command buildCommand(final String[] params) {
+			if (params.length != 1) {
+				return null;
+			}
+			String passengerJMBG = params[0];
+			return new ListPassengerCommand(passengerJMBG);
 		}
 	},
 	LOGIN("LOGIN") {
@@ -51,66 +109,14 @@ public enum CommandType {
 		}
 
 	},
-	TOP_SECRET("TOP_SECRET") {
-		@Override
-		public Command buildCommand(final String[] params) {
-			return new TopSecretCommand();
-		}
-	},
-	ADD("ADD") {
-		@Override
-		public Command buildCommand(final String[] params) {
-			// ADD <FLIGHT_ID> <DEPARTURE_DATE_TIME> <ARRIVAL_DATE_TIME>
-			// <SOURCE> <DESTINATION> <NO_OF_PASSENGERS>
-			if (params.length != 6) {
-				return null;
-			}
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
-			String flightId = params[0];
-			Date departureTime;
-			Date arrivalTime;
-			try {
-				departureTime = simpleDateFormat.parse(params[1]);
-				arrivalTime = simpleDateFormat.parse(params[2]);
-			} catch (ParseException e) {
-				System.out.println("Parse exception!");
-				return new AddCommand();
-			}
-			
-			String source = params[3];
-			String destination = params[4];
-			int numberOfPassingers = Integer.parseInt(params[5]);
-			return new AddCommand(new Flight(flightId, departureTime, arrivalTime, source, destination,
-					numberOfPassingers));
-		}
-	},
-	LIST_ALL("LIST_ALL") {
-		@Override
-		public Command buildCommand(final String[] params) {
-			if (params.length != 0) {
-				return null;
-			}
-			return new ListAllCommand();
-		}
-	},
-	LIST("LIST") {
+	REGISTER("REGISTER") {
 		@Override
 		public Command buildCommand(final String[] params) {
 			if (params.length != 1) {
 				return null;
 			}
-			String flightId = params[0];
-			return new ListCommand(flightId);
-		}
-	},
-	LIST_PASSENGER("LIST_PASSENGER") {
-		@Override
-		public Command buildCommand(final String[] params) {
-			if (params.length != 1) {
-				return null;
-			}
-			String passengerJMBG = params[0];
-			return new ListPassengerCommand(passengerJMBG);
+			String username = params[0];
+			return new RegisterCommand(username);
 		}
 	},
 	RESERVE("RESERVE") {
@@ -124,19 +130,15 @@ public enum CommandType {
 			String name = params[2];
 			String surname = params[3];
 			// try to find passenger in cache
-			Passenger passenger = PassengerDAO.get().insertOrAttach(new Passenger(JMBG, name, surname));
+			Passenger passenger = PassengerDAO.get().insertOrAttach(
+					new Passenger(JMBG, name, surname));
 			return new ReserveCommand(flightId, passenger);
 		}
 	},
-	CANCEL("CANCEL") {
+	TOP_SECRET("TOP_SECRET") {
 		@Override
 		public Command buildCommand(final String[] params) {
-			if (params.length != 2) {
-				return null;
-			}
-			String flightId = params[0];
-			String JMBG = params[1];
-			return new CancelCommand(flightId, JMBG);
+			return new TopSecretCommand();
 		}
 	};
 

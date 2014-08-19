@@ -6,17 +6,17 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.mess
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationResponse;
 
 public class AddReservation {
-private Client client;
-	
+	private Client client;
+
 	public AddReservation(Client client) {
 		this.client = client;
 	}
 
-	public AddReservationResponse execute(AddReservationRequest request) { 
+	public AddReservationResponse execute(AddReservationRequest request) {
 		this.client.sendCommandToServer(produceCommand(request));
-		return  (AddReservationResponse) this.client.getResult();
+		return (AddReservationResponse) this.client.getResult();
 	}
-	
+
 	private String produceCommand(AddReservationRequest request) {
 		return CommandType.RESERVE + " " + request.toString();
 	}

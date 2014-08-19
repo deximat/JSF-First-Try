@@ -20,7 +20,7 @@ public class CommandBuilder {
 		if (commandType == null) {
 			return null;
 		} else {
-			return commandType.buildCommand(params); 
+			return commandType.buildCommand(params);
 		}
 	}
 }

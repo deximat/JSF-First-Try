@@ -15,5 +15,5 @@ public class LoginData {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 }

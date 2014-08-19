@@ -5,7 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 @SessionScoped
 @ManagedBean
-public class UserMessageBox  {
+public class UserMessageBox {
 	private String currentMessage;
 
 	public String getCurrentMessage() {
@@ -15,5 +15,5 @@ public class UserMessageBox  {
 	public void setCurrentMessage(String currentMessage) {
 		this.currentMessage = currentMessage;
 	}
-	
+
 }

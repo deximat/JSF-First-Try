@@ -22,10 +22,10 @@ public class PassengerDAO {
 	public synchronized Passenger getPassengerByJMBG(final String JMBG) {
 		return this.registredPassengers.get(JMBG);
 	}
-	
-	
+
 	public synchronized Passenger insertOrAttach(final Passenger passenger) {
-		Passenger existingPassenger = this.registredPassengers.get(passenger.getJMBG());
+		Passenger existingPassenger = this.registredPassengers.get(passenger
+				.getJMBG());
 		if (existingPassenger != null) {
 			return existingPassenger;
 		}

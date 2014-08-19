@@ -34,15 +34,17 @@ public class FlightDAO {
 		this.registredFlights = loadFlights();
 		for (Flight flight : this.registredFlights.values()) {
 			for (Passenger passenger : flight.getPassengers().values()) {
-				Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(passenger);
-				flight.getPassengers().put(persistedPassenger.getJMBG(), persistedPassenger);
+				Passenger persistedPassenger = PassengerDAO.get()
+						.insertOrAttach(passenger);
+				flight.getPassengers().put(persistedPassenger.getJMBG(),
+						persistedPassenger);
 				persistedPassenger.addFlight(flight);
 			}
 		}
 	}
 
-
-	public synchronized CancelReservationResponse cancel(final String flightId, final Passenger passenger) {
+	public synchronized CancelReservationResponse cancel(final String flightId,
+			final Passenger passenger) {
 		Flight flight = getFlightById(flightId);
 		if (flight == null) {
 			return CancelReservationResponse.FLIGHT_DOESNT_EXIST;
@@ -84,12 +86,13 @@ public class FlightDAO {
 	public TreeMap<String, Flight> loadFlights() {
 		XMLDecoder decoder = null;
 		try {
-			decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(FLIGHTS_PERSISTANCE_FILE)));
+			decoder = new XMLDecoder(new BufferedInputStream(
+					new FileInputStream(FLIGHTS_PERSISTANCE_FILE)));
 			return (TreeMap<String, Flight>) decoder.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("No flights to load!");
 			return new TreeMap<String, Flight>();
-		}  finally {
+		} finally {
 			if (decoder != null) {
 				decoder.close();
 			}
@@ -98,8 +101,8 @@ public class FlightDAO {
 
 	private void persist() {
 		try {
-			XMLEncoder encoder = new XMLEncoder(
-					new BufferedOutputStream(new FileOutputStream(FLIGHTS_PERSISTANCE_FILE)));
+			XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(
+					new FileOutputStream(FLIGHTS_PERSISTANCE_FILE)));
 			encoder.writeObject(this.registredFlights);
 			encoder.close();
 		} catch (IOException e) {
@@ -109,7 +112,8 @@ public class FlightDAO {
 
 	}
 
-	public synchronized AddReservationResponse reserveFlight(final String flightId, final Passenger passenger) {
+	public synchronized AddReservationResponse reserveFlight(
+			final String flightId, final Passenger passenger) {
 		Flight flight = this.registredFlights.get(flightId);
 		if (flight == null) {
 			return AddReservationResponse.FLIGHT_DOES_NOT_EXIST;

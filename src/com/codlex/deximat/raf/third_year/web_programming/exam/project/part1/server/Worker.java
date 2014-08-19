@@ -11,9 +11,9 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User;
 
 public class Worker extends Thread {
-	private static final String END = "END_OF_STREAM_FF44FF";
-
 	private final static ThreadLocal<Worker> CURRENT_WORKER = new ThreadLocal<Worker>();
+
+	private static final String END = "END_OF_STREAM_FF44FF";
 
 	public static Worker getCurrent() {
 		return CURRENT_WORKER.get();
@@ -43,12 +43,13 @@ public class Worker extends Thread {
 		System.out.println("Command arrived: " + stringCommand);
 		String[] commandAndParams = stringCommand.split(" ");
 		String command = commandAndParams[0];
-		String[] params = Arrays.copyOfRange(commandAndParams, 1, commandAndParams.length);
+		String[] params = Arrays.copyOfRange(commandAndParams, 1,
+				commandAndParams.length);
 		Command commandBuilt = CommandBuilder.build(command, params);
 		// if logged in this will enable us to execute autorization commands
 		if (commandBuilt != null) {
 			commandBuilt.setUserInvoker(this.userInvoker);
-		} 
+		}
 		return commandBuilt;
 	}
 
