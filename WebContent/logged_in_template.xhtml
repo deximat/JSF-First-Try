@@ -17,6 +17,11 @@
 		<ui:define name="bigTitle">
 		Prijavljen korisnik: <h:outputText value="#{loginData.username}"></h:outputText>
 		</ui:define>
+		<ui:define name="footer">
+			<h:form>
+				<h:commandLink action="#{user.logout}">Odjava</h:commandLink>
+			</h:form>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

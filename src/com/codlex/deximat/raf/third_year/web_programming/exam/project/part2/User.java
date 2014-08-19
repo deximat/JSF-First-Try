@@ -2,6 +2,7 @@ package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
@@ -92,7 +93,7 @@ public class User {
 		return loginData;
 	}
 
-	public Object getManagedBean(String name) {
+	public static Object getManagedBean(String name) {
 
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		return FacesContext.getCurrentInstance().getApplication()
@@ -122,9 +123,10 @@ public class User {
 		return response.toString();
 	}
 
-	public String logout() {
+	public void logout() {
 		this.client = null;
-		return "SUCCESS";
+		showMessage("Uspesno ste se odjavili!");
+		this.navigation.performNavigation("LOGOUT");
 	}
 
 	public String register() {
@@ -177,4 +179,10 @@ public class User {
 				.execute();
 		return "SUCCESS";
 	}
+
+	public void afterPageLoad() {
+		System.out.println("Pokrenuto");
+		showMessage(null);
+	}
+
 }
