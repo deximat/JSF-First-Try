@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http:/www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-> 
-<head>
-<title> Web rezervacije</title>
-</head>
-<body>
-  <h1>Prijavljen korisnik: <h:outputLabel value="#{loginData.username}"></h:outputLabel></h1>
-  <h2>Let <h:outputText value="#{user.currentFlight.flightId}" />, od: <h:outputText value="#{user.currentFlight.source}" />, do: <h:outputText value="#{user.currentFlight.destination}" />, od <h:outputText value="#{user.currentFlight.departureTime}" />, do <h:outputText value="#{user.currentFlight.arrivalTime}" />.</h2>
-  <h:form>
-  <table border="1" width="60%">
- 		<tr><th width="80%">Putnik</th><th width="20%">Otkaz rezervacije</th></tr>
-	  <ui:repeat value="#{user.getCurrentFlight().getPassengersList()}" var="passenger" >
-	 	 <tr><td><h:commandLink action="#{user.showPassenger(passenger)}"><h:outputText value="#{passenger.toString()}" /></h:commandLink> </td><td><h:commandLink action="#{user.cancelPassenger(passenger)}">Otkazi</h:commandLink></td>  </tr>
-	  </ui:repeat>
-  
-  </table>
-  </h:form>
-  
-  <br/>
-  <p>
-  <a href="rezervacija.faces">Rezervacija sedista</a>
-  </p>
-  <p>
-  <a href="home.faces">Spisak svih letova</a>
-  </p>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="logged_in_template.xhtml">
+		<ui:define name="title">Let <h:outputText value="#{user.currentFlight.flightId}" />, od: <h:outputText
+				value="#{user.currentFlight.source}" />, do: <h:outputText value="#{user.currentFlight.destination}" />, od <h:outputText
+				value="#{user.currentFlight.departureTime}" />, do <h:outputText value="#{user.currentFlight.arrivalTime}" />.</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<table
+					border="1"
+					width="60%">
+					<tr>
+						<th width="80%">Putnik</th>
+						<th width="20%">Otkaz rezervacije</th>
+					</tr>
+					<ui:repeat
+						value="#{user.getCurrentFlight().getPassengersList()}"
+						var="passenger">
+						<tr>
+							<td><h:commandLink action="#{user.showPassenger(passenger)}">
+									<h:outputText value="#{passenger.toString()}" />
+								</h:commandLink></td>
+							<td><h:commandLink action="#{user.cancelPassenger(passenger)}">Otkazi</h:commandLink></td>
+						</tr>
+					</ui:repeat>
+				</table>
+			</h:form>
+		</ui:define>
+		<ui:define name="navigation">
+			<p>
+				<a href="rezervacija.faces">Rezervacija sedista</a>
+			</p>
+			<p>
+				<a href="home.faces">Spisak svih letova</a>
+			</p>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

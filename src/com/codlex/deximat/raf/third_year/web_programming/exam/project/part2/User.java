@@ -22,6 +22,7 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.comm
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands.Register;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddFlightRequest;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationRequest;
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.CancelReservationResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.GetFlightsResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.LoginResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.RegisterResponse;
@@ -40,8 +41,9 @@ public class User {
 		return "SUCCESS";
 	}
 	public String cancelCurrentReservation() {
-		new CancelReservation(this.client).execute(this.currentFlight.getFlightId(), this.currentPassenger.getJMBG());
-		return "SUCCESS";
+		CancelReservationResponse response = new CancelReservation(this.client).execute(this.currentFlight.getFlightId(), this.currentPassenger.getJMBG());
+		showMessage(response.getDescription());
+		return response.toString();
 	}
 	
 	@ManagedProperty(value="#{loginData}")

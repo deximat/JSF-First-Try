@@ -9,5 +9,13 @@
     </void>
    </object>
   </void>
+  <void method="put">
+   <string>ksenija</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>ksenija</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

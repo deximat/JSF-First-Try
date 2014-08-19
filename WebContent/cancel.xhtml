@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http:/www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"> 
-<head>
-<title> Web rezervacije</title>
-</head>
-
-<body>
-
-  <h1>Prijavljen korisnik: <h:outputLabel value="#{loginData.username}"></h:outputLabel></h1>
-  <h2>Otkaz rezervacije sedista let: <h:outputText value="#{user.currentFlight}"></h:outputText>, za putnika: <h:outputText value="#{user.currentPassenger}"></h:outputText></h2>
-  <h:form>
-  	<h:commandButton action="#{user.cancelCurrentReservation()}">Potvrdi</h:commandButton>
-  </h:form>
-  <a href="home.faces">Povratak na osnovnu stranu.</a>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="logged_in_template.xhtml">
+		<ui:define name="title">Otkaz rezervacije sedista let: <h:outputText value="#{user.currentFlight}"></h:outputText>, za putnika: <h:outputText
+				value="#{user.currentPassenger}"></h:outputText>
+		</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:commandButton action="#{user.cancelCurrentReservation()}" value="Potvrdi" />
+			</h:form>
+		</ui:define>
+		<ui:define name="navigation">
+			<a href="home.faces">Povratak na osnovnu stranu.</a>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

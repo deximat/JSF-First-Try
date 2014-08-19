@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http:/www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"> 
-<head>
-<title> Web rezervacije</title>
-</head>
-<body>
-  <h1>Prijavljen korisnik: marko</h1>
-  <h2>Rezervacija sedista</h2>
-  <h2>Let <h:outputText value="#{user.currentFlight.flightId}" />, od: <h:outputText value="#{user.currentFlight.source}" />, do: <h:outputText value="#{user.currentFlight.destination}" />, od <h:outputText value="#{user.currentFlight.departureTime}" />, do <h:outputText value="#{user.currentFlight.arrivalTime}" />.</h2>
-  <h:form>
-  <table border="0" width="60%">
-  <tr><td>JMBG putnika:</td><td><h:inputText value="#{addReservationRequest.JMBG}"></h:inputText></td>   </tr>
-  <tr><td>Ime:</td><td><h:inputText value="#{addReservationRequest.name}"></h:inputText></td>  </tr>
-  <tr><td>Prezime:</td><td><h:inputText value="#{addReservationRequest.surname}"></h:inputText></td></tr>
-  <tr><td> &nbsp; </td><td><h:commandButton action="#{user.addReservation}">Rezervisi</h:commandButton></td></tr>
-  </table>
-  </h:form>
-  <p>
-  <a href="home.faces">Spisak svih letova</a>
-  </p>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="logged_in_template.xhtml">
+		<ui:define name="title">Rezervacija sedista</ui:define>
+		<ui:define name="content">
+			<h2>
+				Let
+				<h:outputText value="#{user.currentFlight.flightId}" />
+				, od:
+				<h:outputText value="#{user.currentFlight.source}" />
+				, do:
+				<h:outputText value="#{user.currentFlight.destination}" />
+				, od
+				<h:outputText value="#{user.currentFlight.departureTime}" />
+				, do
+				<h:outputText value="#{user.currentFlight.arrivalTime}" />
+				.
+			</h2>
+			<h:form>
+				<table
+					border="0"
+					width="60%">
+					<tr>
+						<td>JMBG putnika:</td>
+						<td><h:inputText value="#{addReservationRequest.JMBG}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td>Ime:</td>
+						<td><h:inputText value="#{addReservationRequest.name}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td>Prezime:</td>
+						<td><h:inputText value="#{addReservationRequest.surname}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><h:commandButton action="#{user.addReservation}">Rezervisi</h:commandButton></td>
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>
+		<ui:define name="navigation">
+			<a href="home.faces">Spisak svih letova</a>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

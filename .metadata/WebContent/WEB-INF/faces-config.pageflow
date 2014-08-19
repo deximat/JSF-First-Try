@@ -5,10 +5,12 @@
   <nodes xsi:type="pageflow:PFPage" name="registracija.xhtml" x="122" y="178" id="pf14078850402502" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14078850402501 pf14078850402503" inlinks="pf14078850402503" path="registracija.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf14078861235385" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf14078861235384 pf14080444190850" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="index.faces" x="122" y="946" id="pf14078861235387" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" path="index.faces"/>
-  <nodes xsi:type="pageflow:PFPage" name="list_flight.xhtml" x="770" y="946" id="pf14080444553509" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf14082400739940" inlinks="pf14080444553508 pf14082446528365" path="list_flight.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="list_flight.xhtml" x="770" y="744" id="pf14080444553509" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf14082400739940 pf14084771220120" inlinks="pf14080444553508 pf14082446528365" path="list_flight.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="rezervacija.xhtml" x="122" y="1330" id="pf14082400739941" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14082400739942" path="rezervacija.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="sediste_rezervisano.xhtml" x="338" y="1330" id="pf14082400739943" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14082400739942" path="sediste_rezervisano.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="list_passenger.xhtml" x="554" y="946" id="pf14082400739944" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf14082446528365" inlinks="pf14082400739940" path="list_passenger.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="list_passenger.xhtml" x="554" y="946" id="pf14082400739944" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf14082446528365 pf14084771220122" inlinks="pf14082400739940" path="list_passenger.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cancel.xhtml" x="986" y="946" id="pf14084771220124" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf14084772217527" inlinks="pf14084771220120 pf14084771220122" path="cancel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sediste_otkazano.xhtml" id="pf14084772217528" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf14084772217527" path="sediste_otkazano.xhtml"/>
   <links id="pf14078770610259" target="pf140787706102510" source="pf14078770271640" outcome="SUCCESS"/>
   <links id="pf14078850402501" target="pf14078770271640" source="pf14078850402502" outcome="SUCCESS"/>
   <links id="pf14078861235384" target="pf14078770271640" source="pf14078861235385" outcome="ACCESS_DENIED"/>
@@ -17,6 +19,8 @@
   <links id="pf14082400739942" target="pf14082400739943" source="pf14082400739941" outcome="SUCCESS"/>
   <links id="pf14082400739940" target="pf14082400739944" source="pf14080444553509" outcome="SUCCESS"/>
   <links id="pf14082446528365" target="pf14080444553509" source="pf14082400739944" outcome="SUCCESS"/>
+  <links id="pf14084771220120" target="pf14084771220124" source="pf14080444553509" outcome="SUCCESS" fromaction="#{user.cancelPassenger(passenger)}"/>
+  <links id="pf14084771220122" target="pf14084771220124" source="pf14082400739944" outcome="SUCCESS" fromaction="#{user.cancelFlight(flight)}"/>
   <links id="pf14078850402500" target="pf14078770271640" source="pf14078770271640" outcome="USER_NOT_FOUND">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -27,4 +31,5 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
+  <links id="pf14084772217527" target="pf14084772217528" source="pf14084771220124" fromaction="#{user.cancelCurrentReservation()}"/>
 </pageflow:Pageflow>

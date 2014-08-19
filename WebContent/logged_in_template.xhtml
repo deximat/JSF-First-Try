@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<c:metadata>
+	    <c:event type="preRenderView" listener="#{user.requireLoggedIn}" />
+	</c:metadata>
+	<meta
+		http-equiv="Content-Type"
+		content="text/html; charset=UTF-8" />
+	<title><ui:insert name="title"></ui:insert></title>
+</h:head>
+<h:body>
+	<h1>Prijavljen korisnik: <h:outputText value="#{loginData.username}"></h:outputText></h1>
+	<h2><ui:insert name="title">Naslov template-a</ui:insert></h2>
+	<ui:insert name="content">Content template-a</ui:insert>
+	<ui:insert name="navigation">Default navigacija</ui:insert>
+</h:body>
+</html>
