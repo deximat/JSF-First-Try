@@ -38,15 +38,15 @@
 						<td><h:inputText value="#{addFlightRequest.numberOfPassingers}"></h:inputText></td>
 					</tr>
 					<tr>
-						<td><h:commandButton action="#{user.addFlight}" value="Dodaj let"></h:commandButton></td>
+						<td><h:commandButton
+								action="#{user.addFlight}"
+								value="Dodaj let"></h:commandButton></td>
 					</tr>
 				</table>
 			</h:form>
 		</ui:define>
 		<ui:define name="navigation">
-			<p>
-				<a href="home.faces">Spisak svih letova</a>
-			</p>
+			<a href="home.faces">Spisak svih letova</a>
 		</ui:define>
 	</ui:composition>
 </h:body>

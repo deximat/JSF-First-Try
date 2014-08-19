@@ -2,7 +2,6 @@ package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
@@ -22,6 +21,7 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.comm
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands.Login;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands.Register;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddFlightRequest;
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddFlightResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationRequest;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.CancelReservationResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.GetFlightsResponse;
@@ -48,7 +48,12 @@ public class User {
 
 	public String addFlight() {
 		AddFlightRequest request = (AddFlightRequest) getManagedBean("addFlightRequest");
-		return new AddFlight(this.client).execute(request).toString();
+		AddFlightResponse response = new AddFlight(this.client).execute(request);
+		if (AddFlightResponse.SUCCESS.equals(response)) {
+			this.currentFlight = request.toFlight();
+		}
+		showMessage(response.getDescription());
+		return response.toString();
 	}
 
 	public String addReservation() {

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
-    
-    <navigation-rule>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<navigation-rule>
 		<from-view-id>index.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
@@ -15,9 +14,9 @@
 			<from-outcome>USER_NOT_FOUND</from-outcome>
 			<to-view-id>index.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
+	</navigation-rule>
+
+	<navigation-rule>
 		<from-view-id>registracija.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
@@ -27,22 +26,22 @@
 			<from-outcome>USER_NOT_FOUND</from-outcome>
 			<to-view-id>registracija.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>	    
-    <navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>home.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>list_flight.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>	  
-    
-   <navigation-rule>
+	</navigation-rule>
+
+	<navigation-rule>
 		<from-view-id>rezervacija.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>sediste_rezervisano.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>	   
+	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>list_flight.xhtml</from-view-id>
@@ -55,9 +54,9 @@
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>list_passenger.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>    
-    
-    <navigation-rule>
+	</navigation-rule>
+
+	<navigation-rule>
 		<from-view-id>list_passenger.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{user.cancelFlight(flight)}</from-action>
@@ -68,25 +67,33 @@
 			<from-outcome>SUCCESS</from-outcome>
 			<to-view-id>list_flight.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>  
-        
-    <navigation-rule>
+	</navigation-rule>
+
+	<navigation-rule>
 		<from-view-id>cancel.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{user.cancelCurrentReservation()}</from-action>
 			<to-view-id>sediste_otkazano.xhtml</to-view-id>
 		</navigation-case>
-    </navigation-rule>  
-    
-    <navigation-rule>
-    	<from-view-id>*</from-view-id>
-    	<navigation-case>
-    		<from-outcome>ACCESS_DENIED</from-outcome>
-    		<to-view-id>index.xhtml</to-view-id>
-    	</navigation-case>
-    	<navigation-case>
-    		<from-outcome>LOGOUT</from-outcome>
-    		<to-view-id>index.xhtml</to-view-id>
-    	</navigation-case>
-    </navigation-rule>	
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>add_flight.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{user.addFlight}</from-action>
+			<to-view-id>let_dodat.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>ACCESS_DENIED</from-outcome>
+			<to-view-id>index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>LOGOUT</from-outcome>
+			<to-view-id>index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

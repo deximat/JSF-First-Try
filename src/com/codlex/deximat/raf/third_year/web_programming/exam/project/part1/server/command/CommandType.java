@@ -18,8 +18,7 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.PassengerDAO;
 
-public enum CommandType {
-
+public enum CommandType {	
 	ADD("ADD") {
 		@Override
 		public Command buildCommand(final String[] params) {
@@ -28,19 +27,10 @@ public enum CommandType {
 			if (params.length != 6) {
 				return null;
 			}
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-					"yyyy-MM-dd-HH-mm");
-			String flightId = params[0];
-			Date departureTime;
-			Date arrivalTime;
-			try {
-				departureTime = simpleDateFormat.parse(params[1]);
-				arrivalTime = simpleDateFormat.parse(params[2]);
-			} catch (ParseException e) {
-				System.out.println("Parse exception!");
-				return new AddCommand();
-			}
 
+			String flightId = params[0];
+			Date departureTime = parseDate(params[1]);
+			Date arrivalTime = parseDate(params[2]);;
 			String source = params[3];
 			String destination = params[4];
 			int numberOfPassingers = Integer.parseInt(params[5]);
@@ -152,5 +142,16 @@ public enum CommandType {
 
 	public String getIdentifier() {
 		return this.id;
+	}
+	
+	public static Date parseDate(String date) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+				"yyyy-MM-dd-HH-mm");
+		try {
+			return simpleDateFormat.parse(date);
+		} catch (ParseException e) {
+			System.out.println("Date could not be parsed " + date + " adding with current date!");
+			return new Date();
+		} 
 	}
 }

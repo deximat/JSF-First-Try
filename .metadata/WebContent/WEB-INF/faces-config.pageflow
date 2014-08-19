@@ -14,7 +14,7 @@
   <links id="pf14078770610259" target="pf140787706102510" source="pf14078770271640" outcome="SUCCESS"/>
   <links id="pf14078850402501" target="pf14078770271640" source="pf14078850402502" outcome="SUCCESS"/>
   <links id="pf14078861235384" target="pf14078770271640" source="pf14078861235385" outcome="ACCESS_DENIED"/>
-  <links id="pf14080444190850" target="pf14078770271640" source="pf14078861235385" outcome="SUCCESS" fromaction="#{user.logout}"/>
+  <links id="pf14080444190850" target="pf14078770271640" source="pf14078861235385" outcome="LOGOUT"/>
   <links id="pf14080444553508" target="pf14080444553509" source="pf140787706102510" outcome="SUCCESS"/>
   <links id="pf14082400739942" target="pf14082400739943" source="pf14082400739941" outcome="SUCCESS"/>
   <links id="pf14082400739940" target="pf14082400739944" source="pf14080444553509" outcome="SUCCESS"/>

@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
+
 @ManagedBean
 @RequestScoped
 public class AddFlightRequest implements Serializable {
@@ -69,5 +72,12 @@ public class AddFlightRequest implements Serializable {
 		return this.flightId + " " + this.departureTime + " "
 				+ this.arrivalTime + " " + this.source + " " + this.destination
 				+ " " + this.numberOfPassingers;
+	}
+
+	public Flight toFlight() {
+		return new Flight(this.flightId,
+				CommandType.parseDate(this.departureTime),
+				CommandType.parseDate(this.arrivalTime), this.source,
+				this.destination, this.numberOfPassingers);
 	}
 }
