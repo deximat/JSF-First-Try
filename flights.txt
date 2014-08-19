@@ -2,6 +2,33 @@
 <java version="1.7.0_51" class="java.beans.XMLDecoder">
  <object class="java.util.TreeMap">
   <void method="put">
+   <string>3242344</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight">
+    <void property="arrivalTime">
+     <object class="java.util.Date">
+      <long>1418419320000</long>
+     </object>
+    </void>
+    <void property="departureTime">
+     <object class="java.util.Date">
+      <long>1418419320000</long>
+     </object>
+    </void>
+    <void property="destination">
+     <string>Split</string>
+    </void>
+    <void property="flightId">
+     <string>3242344</string>
+    </void>
+    <void property="numberOfPassingers">
+     <int>234</int>
+    </void>
+    <void property="source">
+     <string>Beograd</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
    <string>PEKTER-AIR-112</string>
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight0">
     <void property="arrivalTime">
@@ -24,7 +51,7 @@
      <int>112</int>
     </void>
     <void property="numberOfReservations">
-     <int>2</int>
+     <int>1</int>
     </void>
     <void property="passengers">
      <void method="put">
@@ -37,31 +64,15 @@
         <void method="add">
          <object idref="Flight0"/>
         </void>
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
        </void>
        <void property="name">
         <string>Aleksandar</string>
        </void>
        <void property="surname">
         <string>Racic</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>667</string>
-      <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger">
-       <void property="JMBG">
-        <string>667</string>
-       </void>
-       <void property="flights">
-        <void method="add">
-         <object idref="Flight0"/>
-        </void>
-       </void>
-       <void property="name">
-        <string>Dejan</string>
-       </void>
-       <void property="surname">
-        <string>Pekter</string>
        </void>
       </object>
      </void>
