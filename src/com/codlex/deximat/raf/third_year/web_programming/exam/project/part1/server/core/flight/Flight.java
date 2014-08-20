@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.PassengerDAO;
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationResponse;
 
 public class Flight implements Serializable {
 
@@ -102,18 +103,23 @@ public class Flight implements Serializable {
 		return this.hashCode;
 	}
 
-	public boolean reserve(final Passenger passenger) {
+	public AddReservationResponse reserve(final Passenger passenger) {
 		int newNumberOfReservations = this.numberOfReservations + 1;
 		if (newNumberOfReservations <= this.numberOfPassingers) {
 			// success
 			this.numberOfReservations = newNumberOfReservations;
 			Passenger persistedPassenger = PassengerDAO.get().insertOrAttach(
 					passenger);
+			if (this.passengers.containsKey(passenger.getJMBG())) {
+				return AddReservationResponse.ALREADY_RESERVED;
+			}
+			
 			this.passengers.put(passenger.getJMBG(), persistedPassenger);
 			persistedPassenger.addFlight(this);
-			return true;
+			
+			return AddReservationResponse.SUCCESS;
 		} else {
-			return false;
+			return AddReservationResponse.FULL;
 		}
 	}
 

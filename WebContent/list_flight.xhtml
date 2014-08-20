@@ -23,7 +23,7 @@
 						value="#{user.getCurrentFlight().getPassengersList()}"
 						var="passenger">
 						<tr>
-							<td><h:commandLink action="#{user.showPassenger(passenger)}">
+							<td><h:commandLink action="#{user.showPassenger(passenger.getJMBG())}">
 									<h:outputText value="#{passenger.toString()}" />
 								</h:commandLink></td>
 							<td><h:commandLink action="#{user.cancelPassenger(passenger)}">Otkazi</h:commandLink></td>

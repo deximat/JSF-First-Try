@@ -6,11 +6,11 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.Clie
 
 public class ListPassenger {
 	private Client client;
-	private Passenger passenger;
+	private String passengerJMBG;
 
-	public ListPassenger(Client client, Passenger passenger) {
+	public ListPassenger(Client client, String passengerJMBG) {
 		this.client = client;
-		this.passenger = passenger;
+		this.passengerJMBG = passengerJMBG;
 	}
 
 	public Passenger execute() {
@@ -21,6 +21,6 @@ public class ListPassenger {
 	}
 
 	private String produceCommand() {
-		return CommandType.LIST_PASSENGER + " " + this.passenger.getJMBG();
+		return CommandType.LIST_PASSENGER + " " + this.passengerJMBG;
 	}
 }

@@ -8,10 +8,6 @@
 <h:body>
 	<ui:composition template="logged_in_template.xhtml">
 		<ui:define name="title">
-			<h:panelGroup rendered="#{userMessageBox.currentMessage != null}">
-				<!--  Doslo je do greske -->
-				<h:outputText value="#{userMessageBox.currentMessage}" />
-			</h:panelGroup>
 			<h:panelGroup rendered="#{userMessageBox.currentMessage == null}">
 				<!--  Sve je OK -->
 				Sediste na letu: <h:outputText value="#{user.currentFlight}" /> za putnika <h:outputText value="#{user.currentPassenger}" /> OTKAZANO!

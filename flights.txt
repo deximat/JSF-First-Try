@@ -3,7 +3,7 @@
  <object class="java.util.TreeMap">
   <void method="put">
    <string>555</string>
-   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight">
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight0">
     <void property="arrivalTime">
      <object class="java.util.Date">
       <long>1415827320000</long>
@@ -22,6 +22,52 @@
     </void>
     <void property="numberOfPassingers">
      <int>11</int>
+    </void>
+    <void property="numberOfReservations">
+     <int>6</int>
+    </void>
+    <void property="passengers">
+     <void method="put">
+      <string>668</string>
+      <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>668</string>
+       </void>
+       <void property="flights">
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
+       </void>
+       <void property="name">
+        <string>Dejan</string>
+       </void>
+       <void property="surname">
+        <string>Pekter</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>669</string>
+      <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>669</string>
+       </void>
+       <void property="flights">
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
+       </void>
+       <void property="name">
+        <string>Ksenija</string>
+       </void>
+       <void property="surname">
+        <string>Grgic</string>
+       </void>
+      </object>
+     </void>
     </void>
     <void property="source">
      <string>Beograd</string>

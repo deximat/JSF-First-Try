@@ -119,12 +119,13 @@ public class FlightDAO {
 			return AddReservationResponse.FLIGHT_DOES_NOT_EXIST;
 		}
 		// now that we have valid flight try to reserve on flight
-		if (flight.reserve(passenger)) {
+		AddReservationResponse response = flight.reserve(passenger);
+		
+		if (AddReservationResponse.SUCCESS.equals(response)){
 			persist();
-			return AddReservationResponse.SUCCESS;
-		} else {
-			return AddReservationResponse.FULL;
 		}
+		
+		return response;
 	}
 
 }

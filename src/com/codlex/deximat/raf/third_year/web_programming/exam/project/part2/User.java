@@ -23,6 +23,7 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.comm
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddFlightRequest;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddFlightResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationRequest;
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.CancelReservationResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.GetFlightsResponse;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.LoginResponse;
@@ -59,7 +60,12 @@ public class User {
 	public String addReservation() {
 		AddReservationRequest request = (AddReservationRequest) getManagedBean("addReservationRequest");
 		request.setFlightId(this.currentFlight.getFlightId());
-		return new AddReservation(this.client).execute(request).toString();
+		AddReservationResponse response = new AddReservation(this.client).execute(request);
+		showMessage(response.getDescription());
+		if (AddReservationResponse.SUCCESS.equals(response)) {
+			showPassenger(request.getJMBG());
+		}
+		return response.toString();
 	}
 
 	public String cancelCurrentReservation() {
@@ -179,8 +185,8 @@ public class User {
 		this.messageBox.setCurrentMessage(message);
 	}
 
-	public String showPassenger(Passenger passenger) {
-		this.currentPassenger = new ListPassenger(this.client, passenger)
+	public String showPassenger(String passengerJMBG) {
+		this.currentPassenger = new ListPassenger(this.client, passengerJMBG)
 				.execute();
 		return "SUCCESS";
 	}
