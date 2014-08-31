@@ -26,5 +26,9 @@ public class GetFlightsResponse implements Serializable {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "There are following flights: " + this.flights;
+	}
 }
