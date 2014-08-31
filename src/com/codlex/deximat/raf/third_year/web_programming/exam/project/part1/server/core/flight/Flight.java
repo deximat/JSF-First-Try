@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.PassengerDAO;
@@ -14,6 +15,7 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.mess
 public class Flight implements Serializable {
 
 	private static final long serialVersionUID = 4181421455147017958L;
+	private static final long CANCEL_SAFETY = 24; // h
 	private Date arrivalTime;
 	private Date departureTime;
 	private String destination;
@@ -161,5 +163,12 @@ public class Flight implements Serializable {
 		return this.flightId + ", od: " + this.source + ", do: "
 				+ this.destination + ", od: " + this.departureTime + ",  do: "
 				+ this.arrivalTime;
+	}
+
+	public boolean isCancelPossible() {
+		// check for time constraint
+		long now = System.currentTimeMillis();
+		long millisUntilFlight = this.departureTime.getTime() - now;
+		return TimeUnit.MILLISECONDS.toHours(millisUntilFlight) >= CANCEL_SAFETY;
 	}
 }

@@ -49,11 +49,8 @@ public class FlightDAO {
 		if (flight == null) {
 			return CancelReservationResponse.FLIGHT_DOESNT_EXIST;
 		}
-		// check for time constraint
-		long now = System.currentTimeMillis();
-		long millisUntilFlight = flight.getDepartureTime().getTime() - now;
-
-		if (TimeUnit.MILLISECONDS.toHours(millisUntilFlight) < 24) {
+		
+		if (!flight.isCancelPossible()) {
 			return CancelReservationResponse.RESERVATION_NOT_POSSIBLE_TOO_LATE;
 		}
 

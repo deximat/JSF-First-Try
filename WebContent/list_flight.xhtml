@@ -26,7 +26,11 @@
 							<td><h:commandLink action="#{user.showPassenger(passenger.getJMBG())}">
 									<h:outputText value="#{passenger.toString()}" />
 								</h:commandLink></td>
-							<td><h:commandLink action="#{user.cancelPassenger(passenger)}">Otkazi</h:commandLink></td>
+							<td>
+								<h:outputText rendered="#{!user.getCurrentFlight().isCancelPossible()}" value="Let nije moguce otkazati, proslo je 24h pre leta. "/>
+								<h:commandLink rendered="#{user.getCurrentFlight().isCancelPossible()}" action="#{user.cancelPassenger(passenger)}">Otkazi</h:commandLink>
+							
+							</td>
 						</tr>
 					</ui:repeat>
 				</table>

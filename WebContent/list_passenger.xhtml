@@ -36,7 +36,11 @@
 								<td><h:outputText value="#{flight.source}" /></td>
 								<td><h:outputText value="#{flight.destination}" /></td>
 							</h:commandLink>
-							<td><h:commandLink action="#{user.cancelFlight(flight)}">Otkaz</h:commandLink></td>
+							<td>
+								<h:outputText rendered="#{!flight.isCancelPossible()}" value="Let nije moguce otkazati, proslo je 24h pre leta. "/>
+								<h:commandLink rendered="#{flight.isCancelPossible()}" action="#{user.cancelFlight(flight)}">Otkaz</h:commandLink>
+								
+							</td>
 						</tr>
 					</ui:repeat>
 				</table>
