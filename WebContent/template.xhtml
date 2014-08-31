@@ -19,10 +19,9 @@
 	<h2>
 		<ui:insert name="title" />
 	</h2>
-	<h:outputText value="#{userMessageBox.currentMessage}"></h:outputText>
+	<h:messages />
 	<ui:insert name="content" />
 	<ui:insert name="navigation" />
 	<ui:insert name="footer" />
-	<h:outputText value="#{requestBasedBean.getNothing()}" />
 </h:body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.el.ELContext;
 import javax.faces.application.ConfigurableNavigationHandler;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -40,9 +41,6 @@ public class User {
 
 	@ManagedProperty(value = "#{loginData}")
 	private LoginData loginData;
-
-	@ManagedProperty(value = "#{userMessageBox}")
-	private UserMessageBox messageBox;
 
 	private ConfigurableNavigationHandler navigation = (ConfigurableNavigationHandler) FacesContext
 			.getCurrentInstance().getApplication().getNavigationHandler();
@@ -111,10 +109,6 @@ public class User {
 				.getELResolver().getValue(elContext, null, name);
 	}
 
-	public UserMessageBox getMessageBox() {
-		return messageBox;
-	}
-
 	public String login() {
 		Client client = new Client();
 		LoginResponse response = new Login(client, this.loginData.getUsername())
@@ -148,13 +142,13 @@ public class User {
 		switch (response) {
 		case SUCCESS:
 			showMessage("User " + this.loginData.getUsername()
-					+ " succesfully registred, you can now login!");
+					+ " je uspesno registrovan, mozete se ulogovati!");
 			break;
 		case USER_ALREADY_EXISTS:
-			showMessage("This username is taken!");
+			showMessage("Korisnicko ime je zauzeto!");
 			break;
 		default:
-			System.out.println("Something is wrong!");
+			System.out.println("Nesto nije u redu!");
 		}
 
 		return response.toString();
@@ -172,17 +166,14 @@ public class User {
 		this.loginData = loginData;
 	}
 
-	public void setMessageBox(UserMessageBox messageBox) {
-		this.messageBox = messageBox;
-	}
-
 	public String showFlight(Flight flight) {
 		this.currentFlight = new ListFlight(this.client, flight).execute();
 		return "SUCCESS";
 	}
 
 	public void showMessage(String message) {
-		this.messageBox.setCurrentMessage(message);
+		// I have only one place to show message
+		FacesContext.getCurrentInstance().addMessage("message", new FacesMessage(message) );
 	}
 
 	public String showPassenger(String passengerJMBG) {
