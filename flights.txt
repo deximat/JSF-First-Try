@@ -24,9 +24,28 @@
      <int>3</int>
     </void>
     <void property="numberOfReservations">
-     <int>1</int>
+     <int>2</int>
     </void>
     <void property="passengers">
+     <void method="put">
+      <string>668</string>
+      <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger">
+       <void property="JMBG">
+        <string>668</string>
+       </void>
+       <void property="flights">
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
+       </void>
+       <void property="name">
+        <string>Ksenija</string>
+       </void>
+       <void property="surname">
+        <string>Grgic</string>
+       </void>
+      </object>
+     </void>
      <void method="put">
       <string>667</string>
       <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger" id="Passenger0">

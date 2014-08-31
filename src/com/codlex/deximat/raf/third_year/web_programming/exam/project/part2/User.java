@@ -47,7 +47,8 @@ public class User {
 
 	public String addFlight() {
 		AddFlightRequest request = (AddFlightRequest) getManagedBean("addFlightRequest");
-		AddFlightResponse response = new AddFlight(this.client).execute(request);
+		AddFlightResponse response = new AddFlight(this.client)
+				.execute(request);
 		if (AddFlightResponse.SUCCESS.equals(response)) {
 			this.currentFlight = request.toFlight();
 		}
@@ -58,7 +59,8 @@ public class User {
 	public String addReservation() {
 		AddReservationRequest request = (AddReservationRequest) getManagedBean("addReservationRequest");
 		request.setFlightId(this.currentFlight.getFlightId());
-		AddReservationResponse response = new AddReservation(this.client).execute(request);
+		AddReservationResponse response = new AddReservation(this.client)
+				.execute(request);
 		showMessage(response.getDescription());
 		if (AddReservationResponse.SUCCESS.equals(response)) {
 			showPassenger(request.getJMBG());
@@ -173,7 +175,10 @@ public class User {
 
 	public void showMessage(String message) {
 		// I have only one place to show message
-		FacesContext.getCurrentInstance().addMessage("message", new FacesMessage(message) );
+		if (message != null && !message.isEmpty()) {
+			FacesContext.getCurrentInstance().addMessage("message",
+					new FacesMessage(message));
+		}
 	}
 
 	public String showPassenger(String passengerJMBG) {
