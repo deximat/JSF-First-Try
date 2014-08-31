@@ -3,6 +3,8 @@ package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.mes
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
+
 @ManagedBean
 @RequestScoped
 public class AddReservationRequest {
@@ -45,7 +47,7 @@ public class AddReservationRequest {
 
 	@Override
 	public String toString() {
-		return this.flightId + " " + this.JMBG + " " + this.name + " "
+		return this.flightId + Command.SEPARATOR + this.JMBG + Command.SEPARATOR + this.name + Command.SEPARATOR
 				+ this.surname;
 	}
 

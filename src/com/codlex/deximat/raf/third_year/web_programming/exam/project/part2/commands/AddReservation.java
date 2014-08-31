@@ -1,5 +1,6 @@
 package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.Client;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationRequest;
@@ -18,7 +19,7 @@ public class AddReservation {
 	}
 
 	private String produceCommand(AddReservationRequest request) {
-		return CommandType.RESERVE + " " + request.toString();
+		return CommandType.RESERVE + Command.SEPARATOR + request.toString();
 	}
 
 }

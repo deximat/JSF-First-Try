@@ -3,6 +3,9 @@ package com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.ser
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User;
 
 public interface Command {
+	
+	String SEPARATOR = "/";
+
 	void execute();
 
 	Object getResult();

@@ -1,5 +1,6 @@
 package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.Client;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.RegisterResponse;
@@ -19,6 +20,6 @@ public class Register {
 	}
 
 	private String produceCommand() {
-		return CommandType.REGISTER.getIdentifier() + " " + this.username;
+		return CommandType.REGISTER.getIdentifier() + Command.SEPARATOR + this.username;
 	}
 }

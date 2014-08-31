@@ -146,7 +146,7 @@ public enum CommandType {
 	
 	public static Date parseDate(String date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd-HH-mm");
+				"yyyy-MM-dd HH:mm");
 		try {
 			return simpleDateFormat.parse(date);
 		} catch (ParseException e) {

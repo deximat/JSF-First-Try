@@ -2,6 +2,14 @@
 <java version="1.7.0_51" class="java.beans.XMLDecoder">
  <object class="java.util.TreeMap">
   <void method="put">
+   <string>deximat</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>deximat</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
    <string>ksenija</string>
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
     <void property="username">

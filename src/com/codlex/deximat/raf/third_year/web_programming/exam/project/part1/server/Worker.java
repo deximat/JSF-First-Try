@@ -38,10 +38,11 @@ public class Worker extends Thread {
 
 	}
 
+	
 	private Command readCommand() {
 		String stringCommand = this.in.nextLine();
 		System.out.println("Command arrived: " + stringCommand);
-		String[] commandAndParams = stringCommand.split(" ");
+		String[] commandAndParams = stringCommand.split(Command.SEPARATOR);
 		String command = commandAndParams[0];
 		String[] params = Arrays.copyOfRange(commandAndParams, 1,
 				commandAndParams.length);

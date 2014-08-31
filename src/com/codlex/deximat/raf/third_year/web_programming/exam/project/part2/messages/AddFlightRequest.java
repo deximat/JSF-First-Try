@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 
@@ -69,9 +70,9 @@ public class AddFlightRequest implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.flightId + " " + this.departureTime + " "
-				+ this.arrivalTime + " " + this.source + " " + this.destination
-				+ " " + this.numberOfPassingers;
+		return this.flightId + Command.SEPARATOR + this.departureTime + Command.SEPARATOR
+				+ this.arrivalTime + Command.SEPARATOR + this.source + Command.SEPARATOR + this.destination
+				+ Command.SEPARATOR + this.numberOfPassingers;
 	}
 
 	public Flight toFlight() {

@@ -1,5 +1,6 @@
 package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.Client;
@@ -21,6 +22,6 @@ public class ListFlight {
 	}
 
 	private String produceCommand() {
-		return CommandType.LIST + " " + this.flight.getFlightId();
+		return CommandType.LIST + Command.SEPARATOR + this.flight.getFlightId();
 	}
 }

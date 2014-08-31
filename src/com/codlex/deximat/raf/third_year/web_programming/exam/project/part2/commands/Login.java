@@ -1,5 +1,6 @@
 package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.commands;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.CommandType;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.Client;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.LoginResponse;
@@ -20,6 +21,6 @@ public class Login {
 	}
 
 	private String produceCommand() {
-		return CommandType.LOGIN.getIdentifier() + " " + this.username;
+		return CommandType.LOGIN.getIdentifier() + Command.SEPARATOR + this.username;
 	}
 }
