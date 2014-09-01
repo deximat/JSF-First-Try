@@ -1,6 +1,8 @@
 package com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages;
 
-public enum AddFlightResponse {
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.client.ConsoleShowable;
+
+public enum AddFlightResponse implements ConsoleShowable {
 	ALREADY_EXISTS("Let vec postoji!"), PARSE_FAILED("Parsiranje informacija o letu nije uspelo."), SUCCESS(null);
 
 	private String description;
@@ -11,5 +13,10 @@ public enum AddFlightResponse {
 	
 	public String getDescription() {
 		return this.description;
+	}
+
+	@Override
+	public String showInConsole() {
+		return getDescription();
 	}
 }

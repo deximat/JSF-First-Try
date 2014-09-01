@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.client.ConsoleShowable;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.PassengerDAO;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part2.messages.AddReservationResponse;
 
-public class Flight implements Serializable {
+public class Flight implements Serializable, ConsoleShowable {
 
 	private static final long serialVersionUID = 4181421455147017958L;
 	private static final long CANCEL_SAFETY = 24; // h
@@ -170,5 +171,10 @@ public class Flight implements Serializable {
 		long now = System.currentTimeMillis();
 		long millisUntilFlight = this.departureTime.getTime() - now;
 		return TimeUnit.MILLISECONDS.toHours(millisUntilFlight) >= CANCEL_SAFETY;
+	}
+
+	@Override
+	public String showInConsole() {
+		return toString();
 	}
 }

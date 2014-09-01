@@ -10,6 +10,22 @@
    </object>
   </void>
   <void method="put">
+   <string>jojo</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>jojo</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>kiseli</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>kiseli</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
    <string>ksenija</string>
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
     <void property="username">

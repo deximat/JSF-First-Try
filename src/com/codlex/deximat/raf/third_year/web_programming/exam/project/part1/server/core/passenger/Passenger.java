@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.client.ConsoleShowable;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 
-public class Passenger implements Serializable {
+public class Passenger implements Serializable, ConsoleShowable {
 
 	private static final long serialVersionUID = -4100224177712466654L;
 	private List<Flight> flights = new ArrayList<>();
@@ -64,4 +65,11 @@ public class Passenger implements Serializable {
 	public String toString() {
 		return this.name + " " + this.surname;
 	}
+
+	@Override
+	public String showInConsole() {
+		return toString();
+	}
+	
+	
 }

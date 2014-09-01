@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.client.ConsoleShowable;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 
-public class GetFlightsResponse implements Serializable {
+public class GetFlightsResponse implements Serializable, ConsoleShowable {
 	private static final long serialVersionUID = 1L;
 	private List<Flight> flights;
 
@@ -29,6 +30,11 @@ public class GetFlightsResponse implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "There are following flights: " + this.flights;
+		return "Sledeci letovi su prisutni u sistemu: " + this.flights;
+	}
+
+	@Override
+	public String showInConsole() {
+		return toString();
 	}
 }

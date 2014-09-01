@@ -8,7 +8,7 @@ public class Logoff extends AbstractCommand {
 	@Override
 	protected void executeCommand() {
 		Worker.getCurrent().setUserInvoker(null);
-		this.result = "Succesfully logged out.";
+		this.result = "Uspesno ste se izlogovali.";
 	}
 
 	@Override

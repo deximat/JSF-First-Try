@@ -13,7 +13,6 @@ import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.serv
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.commands.Logoff;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.commands.RegisterCommand;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.commands.ReserveCommand;
-import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.commands.TopSecretCommand;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger;
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.PassengerDAO;
@@ -123,12 +122,6 @@ public enum CommandType {
 			Passenger passenger = PassengerDAO.get().insertOrAttach(
 					new Passenger(JMBG, name, surname));
 			return new ReserveCommand(flightId, passenger);
-		}
-	},
-	TOP_SECRET("TOP_SECRET") {
-		@Override
-		public Command buildCommand(final String[] params) {
-			return new TopSecretCommand();
 		}
 	};
 

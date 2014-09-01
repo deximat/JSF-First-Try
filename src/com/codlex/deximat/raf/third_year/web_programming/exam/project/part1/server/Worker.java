@@ -70,7 +70,7 @@ public class Worker extends Thread {
 					break;
 				}
 			} else {
-				sendResponse("Wrong number of parameters or command doesn't exist!");
+				sendResponse("Pogresan broj parametara ili komanda ne postoji!");
 			}
 		}
 		try {

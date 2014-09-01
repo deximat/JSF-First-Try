@@ -16,7 +16,7 @@ public abstract class AbstractCommand implements Command {
 			System.out
 					.println("Finished command " + getClass().getSimpleName());
 		} else {
-			this.result = "You must be logged in to run command: "
+			this.result = "Morate biti ulogovani kako bi pokrenuli komandu: "
 					+ getClass().getSimpleName();
 		}
 	}

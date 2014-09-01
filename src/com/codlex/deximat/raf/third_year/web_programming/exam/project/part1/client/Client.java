@@ -43,9 +43,19 @@ public class Client extends Thread {
 		}
 	}
 
-	public synchronized ConsoleShowable getResult() {
+	public synchronized String getResult() {
 		try {
-			return (ConsoleShowable) this.serverIn.readObject();
+			Object obj = this.serverIn.readObject();
+			
+			if (obj instanceof String) {
+				return (String) obj;
+			} else {
+				if (obj != null) {
+					return ((ConsoleShowable) obj).showInConsole();
+				} else {
+					return null;
+				}
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,17 +74,16 @@ public class Client extends Thread {
 	@Override
 	public void run() {
 
-		System.out.println("Welcome to GALAXY system, please do your work!");
+		System.out.println("Dobrodosli u galaxy sistem!");
 		while (true) {
 			String command = this.consoleIn.nextLine();
 			if (command.equals(EXIT_COMMAND)) {
-				System.out.println("Thanks for using GALAXY system!");
+				System.out.println("Zahvaljujemo se na koriscenju GALAXY systema!");
 				return;
 			}
 			sendCommandToServer(command);
-			ConsoleShowable consoleShowable = getResult();
-			System.out.println(consoleShowable == null ? null : getResult().showInConsole());
-			System.out.println("What more, master?");
+			System.out.println(getResult());
+			System.out.println("Kazi, gospodaru?");
 		}
 	}
 }
