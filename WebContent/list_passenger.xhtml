@@ -28,14 +28,14 @@
 						var="flight"
 						varStatus="loop">
 						<tr>
-							<h:commandLink action="#{user.showFlight(flight)}">
-								<td><h:outputText value="#{loop.index + 1}" /></td>
-								<td><h:outputText value="#{flight.flightId}"></h:outputText></td>
-								<td><h:outputText value="#{flight.departureTime}" /></td>
-								<td><h:outputText value="#{flight.arrivalTime}" /></td>
-								<td><h:outputText value="#{flight.source}" /></td>
-								<td><h:outputText value="#{flight.destination}" /></td>
-							</h:commandLink>
+							
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{loop.index + 1}" /></h:commandLink></td>
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{flight.flightId}"/></h:commandLink></td>
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{flight.departureTime}" /></h:commandLink></td>
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{flight.arrivalTime}" /></h:commandLink></td>
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{flight.source}" /></h:commandLink></td>
+								<td><h:commandLink action="#{user.showFlight(flight)}"><h:outputText value="#{flight.destination}" /></h:commandLink></td>
+							
 							<td>
 								<h:outputText rendered="#{!flight.isCancelPossible()}" value="Let nije moguce otkazati, proslo je 24h pre leta. "/>
 								<h:commandLink rendered="#{flight.isCancelPossible()}" action="#{user.cancelFlight(flight)}">Otkaz</h:commandLink>

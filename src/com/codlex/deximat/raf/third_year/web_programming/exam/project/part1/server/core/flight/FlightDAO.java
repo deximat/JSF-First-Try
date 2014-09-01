@@ -38,7 +38,6 @@ public class FlightDAO {
 						.insertOrAttach(passenger);
 				flight.getPassengers().put(persistedPassenger.getJMBG(),
 						persistedPassenger);
-				persistedPassenger.addFlight(flight);
 			}
 		}
 	}

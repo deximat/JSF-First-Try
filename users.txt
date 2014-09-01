@@ -33,5 +33,21 @@
     </void>
    </object>
   </void>
+  <void method="put">
+   <string>ksenija grgic</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>ksenija grgic</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>pera</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>pera</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>
