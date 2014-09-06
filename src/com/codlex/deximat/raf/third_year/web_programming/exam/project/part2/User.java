@@ -45,43 +45,48 @@ public class User {
 	private ConfigurableNavigationHandler navigation = (ConfigurableNavigationHandler) FacesContext
 			.getCurrentInstance().getApplication().getNavigationHandler();
 
-	public String addFlight() {
+	public synchronized String addFlight() {
 		AddFlightRequest request = (AddFlightRequest) getManagedBean("addFlightRequest");
 		AddFlightResponse response = new AddFlight(this.client)
 				.execute(request);
 		if (AddFlightResponse.SUCCESS.equals(response)) {
 			this.currentFlight = request.toFlight();
+		} else {
+			showMessage(response.getDescription());
 		}
-		showMessage(response.getDescription());
 		return response.toString();
 	}
 
-	public String addReservation() {
+	public synchronized String addReservation() {
 		AddReservationRequest request = (AddReservationRequest) getManagedBean("addReservationRequest");
 		request.setFlightId(this.currentFlight.getFlightId());
 		AddReservationResponse response = new AddReservation(this.client)
 				.execute(request);
-		showMessage(response.getDescription());
+		
 		if (AddReservationResponse.SUCCESS.equals(response)) {
 			showPassenger(request.getJMBG());
+		} else {
+			showMessage(response.getDescription());
 		}
 		return response.toString();
 	}
 
-	public String cancelCurrentReservation() {
+	public synchronized String cancelCurrentReservation() {
 		CancelReservationResponse response = new CancelReservation(this.client)
 				.execute(this.currentFlight.getFlightId(),
 						this.currentPassenger.getJMBG());
-		showMessage(response.getDescription());
+		if (!CancelReservationResponse.SUCCESS.equals(response)) {
+			showMessage(response.getDescription());
+		}
 		return response.toString();
 	}
 
-	public String cancelFlight(Flight flight) {
+	public synchronized String cancelFlight(Flight flight) {
 		this.currentFlight = flight;
 		return "SUCCESS";
 	}
 
-	public String cancelPassenger(Passenger passenger) {
+	public synchronized String cancelPassenger(Passenger passenger) {
 		this.currentPassenger = passenger;
 		return "SUCCESS";
 
@@ -91,16 +96,16 @@ public class User {
 		return this.currentFlight;
 	}
 
-	public Passenger getCurrentPassenger() {
+	public synchronized Passenger getCurrentPassenger() {
 		return this.currentPassenger;
 	}
 
-	public List<Flight> getFlights() {
+	public synchronized List<Flight> getFlights() {
 		GetFlightsResponse response = new GetFlights(client).execute();
 		return response.getFlights();
 	}
 
-	public LoginData getLoginData() {
+	public synchronized LoginData getLoginData() {
 		return loginData;
 	}
 
@@ -111,7 +116,7 @@ public class User {
 				.getELResolver().getValue(elContext, null, name);
 	}
 
-	public String login() {
+	public synchronized String login() {
 		Client client = new Client();
 		LoginResponse response = new Login(client, this.loginData.getUsername())
 				.execute();
@@ -130,13 +135,13 @@ public class User {
 		return response.toString();
 	}
 
-	public void logout() {
+	public synchronized void logout() {
 		this.client = null;
 		showMessage("Uspesno ste se odjavili!");
 		this.navigation.performNavigation("LOGOUT");
 	}
 
-	public String register() {
+	public synchronized String register() {
 		Client client = new Client();
 		RegisterResponse response = new Register(client,
 				this.loginData.getUsername()).execute();
@@ -156,7 +161,7 @@ public class User {
 		return response.toString();
 	}
 
-	public void requireLoggedIn() {
+	public synchronized void requireLoggedIn() {
 		boolean isLoggedIn = client != null;
 		if (!isLoggedIn) {
 			showMessage("Login to access this page!");
@@ -164,16 +169,16 @@ public class User {
 		}
 	}
 
-	public void setLoginData(LoginData loginData) {
+	public synchronized void setLoginData(LoginData loginData) {
 		this.loginData = loginData;
 	}
 
-	public String showFlight(Flight flight) {
+	public synchronized String showFlight(Flight flight) {
 		this.currentFlight = new ListFlight(this.client, flight).execute();
 		return "SUCCESS";
 	}
 
-	public void showMessage(String message) {
+	public synchronized void showMessage(String message) {
 		// I have only one place to show message
 		if (message != null && !message.isEmpty()) {
 			FacesContext.getCurrentInstance().addMessage("message",
@@ -181,15 +186,10 @@ public class User {
 		}
 	}
 
-	public String showPassenger(String passengerJMBG) {
+	public synchronized String showPassenger(String passengerJMBG) {
 		this.currentPassenger = new ListPassenger(this.client, passengerJMBG)
 				.execute();
 		return "SUCCESS";
-	}
-
-	public void afterPageLoad() {
-		System.out.println("Pokrenuto");
-		showMessage(null);
 	}
 
 }

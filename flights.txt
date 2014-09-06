@@ -2,29 +2,29 @@
 <java version="1.7.0_51" class="java.beans.XMLDecoder">
  <object class="java.util.TreeMap">
   <void method="put">
-   <string>3343</string>
+   <string>442</string>
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight0">
     <void property="arrivalTime">
      <object class="java.util.Date">
-      <long>1414962660000</long>
+      <long>1414880640000</long>
      </object>
     </void>
     <void property="departureTime">
      <object class="java.util.Date">
-      <long>1397249040000</long>
+      <long>1414877040000</long>
      </object>
     </void>
     <void property="destination">
-     <string>Kolosek</string>
+     <string>Novi Sad</string>
     </void>
     <void property="flightId">
-     <string>3343</string>
+     <string>442</string>
     </void>
     <void property="numberOfPassingers">
-     <int>22</int>
+     <int>13</int>
     </void>
     <void property="numberOfReservations">
-     <int>1</int>
+     <int>2</int>
     </void>
     <void property="passengers">
      <void method="put">
@@ -35,28 +35,25 @@
        </void>
        <void property="flights">
         <void method="add">
-         <object idref="Flight0"/>
-        </void>
-        <void method="add">
          <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight1">
           <void property="arrivalTime">
            <object class="java.util.Date">
-            <long>1414962660000</long>
+            <long>1410384240000</long>
            </object>
           </void>
           <void property="departureTime">
            <object class="java.util.Date">
-            <long>1397249040000</long>
+            <long>1410380640000</long>
            </object>
           </void>
           <void property="destination">
-           <string>Nju Jork</string>
+           <string>Skoplje</string>
           </void>
           <void property="flightId">
-           <string>PERA-TRANS</string>
+           <string>AIR-PEKTER-001</string>
           </void>
           <void property="numberOfPassingers">
-           <int>2</int>
+           <int>113</int>
           </void>
           <void property="numberOfReservations">
            <int>2</int>
@@ -64,13 +61,83 @@
           <void property="passengers">
            <void method="put">
             <string>668</string>
-            <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger">
+            <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.passenger.Passenger" id="Passenger1">
              <void property="JMBG">
               <string>668</string>
              </void>
              <void property="flights">
               <void method="add">
                <object idref="Flight1"/>
+              </void>
+              <void method="add">
+               <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight2">
+                <void property="arrivalTime">
+                 <object class="java.util.Date">
+                  <long>1410382200000</long>
+                 </object>
+                </void>
+                <void property="departureTime">
+                 <object class="java.util.Date">
+                  <long>1410380640000</long>
+                 </object>
+                </void>
+                <void property="destination">
+                 <string>Sombor</string>
+                </void>
+                <void property="flightId">
+                 <string>AIR-PEKTER-002</string>
+                </void>
+                <void property="numberOfPassingers">
+                 <int>2</int>
+                </void>
+                <void property="numberOfReservations">
+                 <int>1</int>
+                </void>
+                <void property="passengers">
+                 <void method="put">
+                  <string>668</string>
+                  <object idref="Passenger1"/>
+                 </void>
+                </void>
+                <void property="source">
+                 <string>Beograd</string>
+                </void>
+               </object>
+              </void>
+              <void method="add">
+               <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight3">
+                <void property="arrivalTime">
+                 <object class="java.util.Date">
+                  <long>1414882440000</long>
+                 </object>
+                </void>
+                <void property="departureTime">
+                 <object class="java.util.Date">
+                  <long>1414878600000</long>
+                 </object>
+                </void>
+                <void property="destination">
+                 <string>Novi Sad</string>
+                </void>
+                <void property="flightId">
+                 <string>443</string>
+                </void>
+                <void property="numberOfPassingers">
+                 <int>13</int>
+                </void>
+                <void property="numberOfReservations">
+                 <int>1</int>
+                </void>
+                <void property="passengers">
+                 <void method="put">
+                  <string>668</string>
+                  <object idref="Passenger1"/>
+                 </void>
+                </void>
+                <void property="source">
+                 <string>Beograd</string>
+                </void>
+               </object>
               </void>
              </void>
              <void property="name">
@@ -91,6 +158,44 @@
           </void>
          </object>
         </void>
+        <void method="add">
+         <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.flight.Flight" id="Flight4">
+          <void property="arrivalTime">
+           <object class="java.util.Date">
+            <long>1410022500000</long>
+           </object>
+          </void>
+          <void property="departureTime">
+           <object class="java.util.Date">
+            <long>1410018900000</long>
+           </object>
+          </void>
+          <void property="destination">
+           <string>Kikinda</string>
+          </void>
+          <void property="flightId">
+           <string>AIR-PEKTER-003</string>
+          </void>
+          <void property="numberOfPassingers">
+           <int>2</int>
+          </void>
+          <void property="numberOfReservations">
+           <int>1</int>
+          </void>
+          <void property="passengers">
+           <void method="put">
+            <string>667</string>
+            <object idref="Passenger0"/>
+           </void>
+          </void>
+          <void property="source">
+           <string>Beograd</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Flight0"/>
+        </void>
        </void>
        <void property="name">
         <string>Dejan</string>
@@ -107,8 +212,20 @@
    </object>
   </void>
   <void method="put">
-   <string>PERA-TRANS</string>
+   <string>443</string>
+   <object idref="Flight3"/>
+  </void>
+  <void method="put">
+   <string>AIR-PEKTER-001</string>
    <object idref="Flight1"/>
+  </void>
+  <void method="put">
+   <string>AIR-PEKTER-002</string>
+   <object idref="Flight2"/>
+  </void>
+  <void method="put">
+   <string>AIR-PEKTER-003</string>
+   <object idref="Flight4"/>
   </void>
  </object>
 </java>

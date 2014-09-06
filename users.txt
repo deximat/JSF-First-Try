@@ -26,6 +26,14 @@
    </object>
   </void>
   <void method="put">
+   <string>kokos</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>kokos</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
    <string>ksenija</string>
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
     <void property="username">
@@ -46,6 +54,14 @@
    <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
     <void property="username">
      <string>pera</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>pica</string>
+   <object class="com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.core.user.User">
+    <void property="username">
+     <string>pica</string>
     </void>
    </object>
   </void>

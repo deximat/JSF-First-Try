@@ -68,7 +68,7 @@ public class Passenger implements Serializable, ConsoleShowable {
 
 	@Override
 	public String showInConsole() {
-		return toString();
+		return toString() + " ima sledece letove: " + this.flights;
 	}
 	
 	

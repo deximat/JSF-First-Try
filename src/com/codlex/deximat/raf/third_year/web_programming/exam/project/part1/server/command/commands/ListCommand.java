@@ -19,7 +19,7 @@ public class ListCommand extends AbstractCommand {
 			System.out.println("Produced " + flight);
 			this.result = flight;
 		} else {
-			this.result = null;
+			this.result = "Let sa datim ID-em nije pronadjen!";
 		}
 	}
 

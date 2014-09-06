@@ -67,6 +67,7 @@ public class Client extends Thread {
 	}
 
 	public synchronized void sendCommandToServer(final String command) {
+		
 		this.serverOut.print(command + "\n");
 		this.serverOut.flush();
 	}
@@ -74,6 +75,7 @@ public class Client extends Thread {
 	@Override
 	public void run() {
 
+		try {
 		System.out.println("Dobrodosli u galaxy sistem!");
 		while (true) {
 			String command = this.consoleIn.nextLine();
@@ -84,6 +86,15 @@ public class Client extends Thread {
 			sendCommandToServer(command);
 			System.out.println(getResult());
 			System.out.println("Kazi, gospodaru?");
+		}
+		} finally {
+			this.consoleIn.close();
+			try {
+				this.server.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

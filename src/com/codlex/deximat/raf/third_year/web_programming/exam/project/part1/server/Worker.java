@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.codlex.deximat.raf.third_year.web_programming.exam.project.part1.server.command.Command;
@@ -40,7 +41,26 @@ public class Worker extends Thread {
 
 	
 	private Command readCommand() {
-		String stringCommand = this.in.nextLine();
+		String stringCommand = null;
+		try {
+			stringCommand = this.in.nextLine();
+		} catch (NoSuchElementException e) {
+			System.out.println("Client finished work!");
+			return new Command() {
+				@Override
+				public void setUserInvoker(User userInvoker) {					
+				}
+				
+				@Override
+				public Object getResult() {
+					return END;
+				}
+				
+				@Override
+				public void execute() {					
+				}
+			};
+		}
 		System.out.println("Command arrived: " + stringCommand);
 		String[] commandAndParams = stringCommand.split(Command.SEPARATOR);
 		String command = commandAndParams[0];
@@ -61,14 +81,18 @@ public class Worker extends Thread {
 			// get command
 			Command command = readCommand();
 			if (command != null) {
+				
 				// execute command
 				command.execute();
-				// send response to client
-				sendResponse(command.getResult());
-
-				if (command.getResult().equals(END)) {
+				
+				// kill
+				if (command.getResult() != null && command.getResult().equals(END)) {
 					break;
 				}
+				
+				// send response to client
+				sendResponse(command.getResult());
+				
 			} else {
 				sendResponse("Pogresan broj parametara ili komanda ne postoji!");
 			}

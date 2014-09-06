@@ -175,6 +175,6 @@ public class Flight implements Serializable, ConsoleShowable {
 
 	@Override
 	public String showInConsole() {
-		return toString();
+		return toString() + " preostali broj putnika je: " + (this.numberOfPassingers - this.numberOfReservations);
 	}
 }
